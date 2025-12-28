@@ -1,12 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import PasswordScreen from "@/components/PasswordScreen";
+import Navigation from "@/components/Navigation";
+import MainContent from "@/components/MainContent";
 
 const Index = () => {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [activeSection, setActiveSection] = useState("audios");
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handlePasswordSuccess = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setIsAuthenticated(true);
+      setIsTransitioning(false);
+    }, 800);
+  };
+
+  const handleNavigate = (section: string) => {
+    setActiveSection(section);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className={`transition-all duration-700 ${isTransitioning ? "opacity-0 blur-lg scale-105" : "opacity-100"}`}>
+        <PasswordScreen onSuccess={handlePasswordSuccess} />
       </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation activeSection={activeSection} onNavigate={handleNavigate} />
+      <MainContent activeSection={activeSection} />
     </div>
   );
 };
