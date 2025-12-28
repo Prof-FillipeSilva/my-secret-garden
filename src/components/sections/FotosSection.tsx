@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Image, X, ChevronLeft, ChevronRight, Heart, Sparkles } from "lucide-react";
 
 interface Foto {
   id: string;
@@ -43,71 +43,91 @@ const FotosSection = () => {
   };
 
   return (
-    <section className="min-h-screen gradient-royal py-12 px-4">
-      <div className="container mx-auto max-w-6xl">
+    <section className="min-h-screen section-royal py-16 px-4 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute top-1/3 -left-40 w-80 h-80 bg-rose/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/3 -right-40 w-96 h-96 bg-gold/10 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-in-up">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-foreground/10 mb-4">
-            <Image className="w-8 h-8 text-primary-foreground" />
+        <div className="text-center mb-16 animate-fade-in-up">
+          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass glow-gold mb-6">
+            <Image className="w-10 h-10 text-gold" style={{ filter: "drop-shadow(0 0 10px hsl(43 70% 55% / 0.5))" }} />
+            <Sparkles className="absolute -top-2 -right-2 w-5 h-5 text-rose animate-twinkle" />
           </div>
-          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-3">
+          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4 tracking-wide">
             Galeria de Fotos
           </h2>
-          <p className="text-primary-foreground/70 font-body max-w-md mx-auto">
+          <p className="text-muted-foreground font-body font-light max-w-lg mx-auto leading-relaxed">
             Momentos eternizados, memórias que guardaremos para sempre
           </p>
+          <div className="divider-elegant w-32 mx-auto mt-8" />
         </div>
 
         {/* Photo Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {fotos.map((foto, index) => (
             <div
               key={foto.id}
               onClick={() => openLightbox(index)}
-              className="relative aspect-square overflow-hidden rounded-xl cursor-pointer group animate-scale-in"
-              style={{ animationDelay: `${index * 0.08}s` }}
+              className="relative aspect-square overflow-hidden rounded-2xl cursor-pointer group animate-scale-in"
+              style={{ animationDelay: `${index * 0.08 + 0.2}s` }}
             >
               <img
                 src={foto.src}
                 alt={foto.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 transition-colors duration-300" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center">
-                  <Image className="w-6 h-6 text-primary-foreground" />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Hover content */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="w-16 h-16 rounded-2xl glass-strong flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-500">
+                  <Heart className="w-7 h-7 text-rose" />
                 </div>
               </div>
+
+              {/* Border glow on hover */}
+              <div className="absolute inset-0 rounded-2xl border border-gold/0 group-hover:border-gold/30 transition-all duration-500 group-hover:glow-gold" />
             </div>
           ))}
         </div>
 
         {/* Empty State */}
         {fotos.length === 0 && (
-          <div className="text-center py-16">
-            <Image className="w-16 h-16 text-primary-foreground/30 mx-auto mb-4" />
-            <p className="text-primary-foreground/60 font-body">
+          <div className="text-center py-20 glass rounded-2xl">
+            <Image className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
+            <p className="text-muted-foreground font-body">
               Nenhuma foto adicionada ainda
             </p>
           </div>
         )}
 
         {/* Footer Note */}
-        <p className="text-center text-primary-foreground/50 text-sm mt-12 font-body">
-          📸 Cada foto conta uma história nossa
-        </p>
+        <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+          <p className="text-muted-foreground/50 text-sm font-body font-light flex items-center justify-center gap-2">
+            <span className="w-8 h-px bg-gold/30" />
+            Cada foto conta uma história nossa
+            <span className="w-8 h-px bg-gold/30" />
+          </p>
+        </div>
       </div>
 
       {/* Lightbox */}
       {selectedIndex !== null && (
         <div 
-          className="fixed inset-0 z-50 bg-foreground/95 backdrop-blur-xl flex items-center justify-center animate-fade-in"
+          className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl flex items-center justify-center animate-fade-in"
           onClick={closeLightbox}
         >
           {/* Close Button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 w-12 h-12 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center text-primary-foreground transition-colors z-10"
+            className="absolute top-6 right-6 w-14 h-14 rounded-2xl glass-strong flex items-center justify-center text-foreground hover:glow-rose transition-all duration-300 z-10"
           >
             <X className="w-6 h-6" />
           </button>
@@ -115,7 +135,7 @@ const FotosSection = () => {
           {/* Previous Button */}
           <button
             onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center text-primary-foreground transition-colors z-10"
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-14 h-14 rounded-2xl glass-strong flex items-center justify-center text-foreground hover:glow-gold transition-all duration-300 z-10"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -123,25 +143,25 @@ const FotosSection = () => {
           {/* Next Button */}
           <button
             onClick={(e) => { e.stopPropagation(); goToNext(); }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center text-primary-foreground transition-colors z-10"
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-14 h-14 rounded-2xl glass-strong flex items-center justify-center text-foreground hover:glow-gold transition-all duration-300 z-10"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
           {/* Image */}
-          <div className="max-w-5xl max-h-[85vh] p-4" onClick={(e) => e.stopPropagation()}>
+          <div className="max-w-5xl max-h-[85vh] p-4 md:p-8" onClick={(e) => e.stopPropagation()}>
             <img
               src={fotos[selectedIndex].src}
               alt={fotos[selectedIndex].alt}
-              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-romantic"
+              className="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-romantic animate-scale-in"
             />
-            <p className="text-center text-primary-foreground/70 mt-4 font-body">
+            <p className="text-center text-muted-foreground/70 mt-6 font-body">
               {fotos[selectedIndex].alt}
             </p>
           </div>
 
           {/* Counter */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-primary-foreground/60 font-body text-sm">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 glass px-6 py-3 rounded-full font-body text-sm text-foreground/80">
             {selectedIndex + 1} / {fotos.length}
           </div>
         </div>

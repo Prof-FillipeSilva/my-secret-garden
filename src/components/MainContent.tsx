@@ -3,6 +3,7 @@ import PoemasSection from "./sections/PoemasSection";
 import FotosSection from "./sections/FotosSection";
 import MusicasSection from "./sections/MusicasSection";
 import SurpresaSection from "./sections/SurpresaSection";
+import ParticlesBackground from "./ParticlesBackground";
 
 interface MainContentProps {
   activeSection: string;
@@ -27,8 +28,11 @@ const MainContent = ({ activeSection }: MainContentProps) => {
   };
 
   return (
-    <main className="min-h-screen animate-blur-in">
-      {renderSection()}
+    <main className="min-h-screen relative">
+      <ParticlesBackground />
+      <div className="relative z-10 animate-blur-in">
+        {renderSection()}
+      </div>
     </main>
   );
 };
