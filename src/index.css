@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,105 +6,76 @@
 
 @layer base {
   :root {
-    /* Romantic Royal Blue Theme */
-    --background: 220 33% 98%;
-    --foreground: 222 47% 20%;
+    /* Elegant Romantic Theme */
+    --background: 225 30% 6%;
+    --foreground: 220 20% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 20%;
+    --card: 225 25% 10%;
+    --card-foreground: 220 20% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 20%;
+    --popover: 225 25% 10%;
+    --popover-foreground: 220 20% 95%;
 
-    --primary: 222 63% 33%;
-    --primary-foreground: 220 33% 98%;
+    --primary: 222 63% 45%;
+    --primary-foreground: 220 20% 98%;
 
-    --secondary: 220 20% 96%;
-    --secondary-foreground: 222 47% 20%;
+    --secondary: 225 20% 14%;
+    --secondary-foreground: 220 20% 90%;
 
-    --muted: 220 20% 92%;
+    --muted: 225 20% 18%;
     --muted-foreground: 220 15% 55%;
 
-    --accent: 310 35% 65%;
+    --accent: 310 40% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 88%;
-    --input: 220 20% 88%;
-    --ring: 222 63% 33%;
+    --border: 225 15% 20%;
+    --input: 225 15% 20%;
+    --ring: 222 63% 50%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     /* Custom romantic colors */
     --royal-blue: 222 63% 33%;
-    --pearl-white: 220 33% 98%;
-    --blue-gray: 220 20% 77%;
-    --rose-dust: 310 35% 65%;
-    --soft-gold: 43 65% 52%;
+    --royal-blue-light: 222 55% 55%;
+    --pearl-white: 220 20% 95%;
+    --blue-gray: 220 20% 50%;
+    --rose-dust: 310 40% 60%;
+    --rose-light: 310 50% 75%;
+    --soft-gold: 43 70% 55%;
+    --gold-light: 43 65% 70%;
+    
+    /* Deep romantic colors */
+    --midnight: 225 30% 6%;
+    --twilight: 225 25% 12%;
 
     /* Gradients */
-    --gradient-royal: linear-gradient(135deg, hsl(222 63% 28%) 0%, hsl(222 63% 38%) 100%);
-    --gradient-romantic: linear-gradient(180deg, hsl(220 33% 98%) 0%, hsl(220 25% 94%) 100%);
-    --gradient-gold: linear-gradient(90deg, hsl(43 65% 52%) 0%, hsl(43 55% 62%) 100%);
+    --gradient-royal: linear-gradient(135deg, hsl(222 63% 20%) 0%, hsl(225 50% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(225 25% 12%) 0%, hsl(225 25% 8%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 70% 55%) 0%, hsl(35 60% 45%) 100%);
+    --gradient-rose: linear-gradient(135deg, hsl(310 40% 60%) 0%, hsl(320 45% 50%) 100%);
+    --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(222 63% 33% / 0.15);
-    --shadow-romantic: 0 8px 32px -8px hsl(310 35% 65% / 0.2);
-    --shadow-glow: 0 0 40px hsl(222 63% 33% / 0.1);
+    --shadow-soft: 0 4px 30px -4px hsl(222 63% 33% / 0.2);
+    --shadow-romantic: 0 8px 40px -8px hsl(310 40% 60% / 0.15);
+    --shadow-glow: 0 0 60px hsl(222 63% 50% / 0.15);
+    --shadow-gold: 0 0 40px hsl(43 70% 55% / 0.2);
 
     /* Typography */
-    --font-display: 'Playfair Display', serif;
+    --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-background: 225 25% 10%;
+    --sidebar-foreground: 220 20% 90%;
+    --sidebar-primary: 222 63% 45%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222 47% 8%;
-    --foreground: 220 33% 95%;
-
-    --card: 222 47% 12%;
-    --card-foreground: 220 33% 95%;
-
-    --popover: 222 47% 12%;
-    --popover-foreground: 220 33% 95%;
-
-    --primary: 220 60% 70%;
-    --primary-foreground: 222 47% 8%;
-
-    --secondary: 222 30% 18%;
-    --secondary-foreground: 220 33% 95%;
-
-    --muted: 222 30% 18%;
-    --muted-foreground: 220 15% 65%;
-
-    --accent: 310 35% 55%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 222 30% 22%;
-    --input: 222 30% 22%;
-    --ring: 220 60% 70%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 225 20% 14%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 225 15% 20%;
+    --sidebar-ring: 222 63% 50%;
   }
 }
 
@@ -113,13 +84,20 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
     font-family: var(--font-body);
+    background: linear-gradient(180deg, hsl(225 30% 6%) 0%, hsl(225 35% 4%) 100%);
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    letter-spacing: 0.02em;
   }
 }
 
@@ -136,8 +114,12 @@
     background: var(--gradient-royal);
   }
 
-  .gradient-romantic {
-    background: var(--gradient-romantic);
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .gradient-glass {
+    background: var(--gradient-glass);
   }
 
   .shadow-romantic {
@@ -148,58 +130,124 @@
     box-shadow: var(--shadow-soft);
   }
 
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
   .text-gradient-gold {
     background: var(--gradient-gold);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  .text-gradient-rose {
+    background: var(--gradient-rose);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass morphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Glow effects */
+  .glow-gold {
+    box-shadow: 0 0 30px hsl(43 70% 55% / 0.3), 0 0 60px hsl(43 70% 55% / 0.1);
+  }
+
+  .glow-rose {
+    box-shadow: 0 0 30px hsl(310 40% 60% / 0.3), 0 0 60px hsl(310 40% 60% / 0.1);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 30px hsl(222 63% 50% / 0.3), 0 0 60px hsl(222 63% 50% / 0.1);
+  }
+
+  /* Elegant divider */
+  .divider-elegant {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, hsl(var(--soft-gold) / 0.4) 50%, transparent 100%);
+  }
+
+  /* Section backgrounds */
+  .section-dark {
+    background: linear-gradient(180deg, hsl(225 30% 6%) 0%, hsl(225 35% 4%) 100%);
+  }
+
+  .section-royal {
+    background: linear-gradient(180deg, hsl(222 63% 18%) 0%, hsl(225 50% 10%) 100%);
+  }
 }
 
 @layer utilities {
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.8s ease-out forwards;
   }
 
   .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 1s ease-out forwards;
   }
 
   .animate-blur-in {
-    animation: blurIn 0.8s ease-out forwards;
+    animation: blurIn 1s ease-out forwards;
   }
 
   .animate-scale-in {
-    animation: scaleIn 0.5s ease-out forwards;
+    animation: scaleIn 0.6s ease-out forwards;
   }
 
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
 
+  .animate-float-slow {
+    animation: float 10s ease-in-out infinite;
+  }
+
   .animate-pulse-soft {
-    animation: pulseSoft 3s ease-in-out infinite;
+    animation: pulseSoft 4s ease-in-out infinite;
   }
 
   .animate-shimmer {
-    animation: shimmer 2s linear infinite;
+    animation: shimmer 3s linear infinite;
     background-size: 200% 100%;
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotateSlow 20s linear infinite;
   }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -210,18 +258,20 @@
 @keyframes blurIn {
   from {
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(20px);
+    transform: scale(0.98);
   }
   to {
     opacity: 1;
     filter: blur(0);
+    transform: scale(1);
   }
 }
 
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
@@ -230,46 +280,69 @@
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
 }
 
 @keyframes pulseSoft {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(43 70% 55% / 0.2), 0 0 40px hsl(43 70% 55% / 0.1);
   }
-  100% {
-    background-position: 200% 0;
+  50% { 
+    box-shadow: 0 0 30px hsl(43 70% 55% / 0.4), 0 0 60px hsl(43 70% 55% / 0.2);
   }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.animate-shake {
+  animation: shake 0.3s ease-in-out;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--secondary));
+  background: hsl(225 25% 10%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--blue-gray));
-  border-radius: 4px;
+  background: hsl(var(--soft-gold) / 0.3);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary));
+  background: hsl(var(--soft-gold) / 0.5);
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--rose-dust) / 0.3);
+  color: hsl(var(--foreground));
 }

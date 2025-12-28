@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
+        display: ['Cormorant Garamond', 'serif'],
         body: ['Montserrat', 'sans-serif'],
       },
       colors: {
@@ -52,10 +52,15 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         royal: "hsl(var(--royal-blue))",
+        "royal-light": "hsl(var(--royal-blue-light))",
         pearl: "hsl(var(--pearl-white))",
         "blue-gray": "hsl(var(--blue-gray))",
         rose: "hsl(var(--rose-dust))",
+        "rose-light": "hsl(var(--rose-light))",
         gold: "hsl(var(--soft-gold))",
+        "gold-light": "hsl(var(--gold-light))",
+        midnight: "hsl(var(--midnight))",
+        twilight: "hsl(var(--twilight))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -97,6 +102,26 @@ export default {
           "0%, 100%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.1)" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-15px) rotate(2deg)" },
+        },
+        "twinkle": {
+          "0%, 100%": { opacity: "0.3", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.2)" },
+        },
+        "glow": {
+          "0%, 100%": { 
+            boxShadow: "0 0 20px hsl(43 70% 55% / 0.2), 0 0 40px hsl(43 70% 55% / 0.1)",
+          },
+          "50%": { 
+            boxShadow: "0 0 30px hsl(43 70% 55% / 0.4), 0 0 60px hsl(43 70% 55% / 0.2)",
+          },
+        },
+        "rotate-slow": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -105,11 +130,18 @@ export default {
         "fade-out": "fade-out 0.5s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
         "heart-beat": "heart-beat 1.5s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
+        "float-slow": "float 10s ease-in-out infinite",
+        "twinkle": "twinkle 2s ease-in-out infinite",
+        "glow": "glow 3s ease-in-out infinite",
+        "pulse-soft": "pulse 4s ease-in-out infinite",
+        "rotate-slow": "rotate-slow 20s linear infinite",
       },
       backgroundImage: {
-        'gradient-royal': 'linear-gradient(135deg, hsl(222 63% 28%) 0%, hsl(222 63% 38%) 100%)',
-        'gradient-romantic': 'linear-gradient(180deg, hsl(220 33% 98%) 0%, hsl(220 25% 94%) 100%)',
-        'gradient-gold': 'linear-gradient(90deg, hsl(43 65% 52%) 0%, hsl(43 55% 62%) 100%)',
+        'gradient-royal': 'linear-gradient(135deg, hsl(222 63% 20%) 0%, hsl(225 50% 8%) 100%)',
+        'gradient-romantic': 'linear-gradient(180deg, hsl(225 30% 6%) 0%, hsl(225 35% 4%) 100%)',
+        'gradient-gold': 'linear-gradient(135deg, hsl(43 70% 55%) 0%, hsl(35 60% 45%) 100%)',
+        'gradient-rose': 'linear-gradient(135deg, hsl(310 40% 60%) 0%, hsl(320 45% 50%) 100%)',
       },
     },
   },
