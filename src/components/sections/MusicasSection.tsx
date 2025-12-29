@@ -34,15 +34,15 @@ const MusicasSection = () => {
     <section className="min-h-screen py-16 px-4 relative">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 right-20 w-80 h-80 bg-gold/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-40 left-20 w-96 h-96 bg-rose/5 rounded-full blur-[140px]" />
+        <div className="absolute top-20 right-20 w-80 h-80 bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-40 left-20 w-96 h-96 bg-rose-dust/8 rounded-full blur-[140px]" />
       </div>
 
       <div className="container mx-auto max-w-4xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass glow-gold mb-6">
-            <Music className="w-10 h-10 text-gold" style={{ filter: "drop-shadow(0 0 10px hsl(43 70% 55% / 0.5))" }} />
+          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass-soft shadow-soft border border-rose-dust/20 mb-6">
+            <Music className="w-10 h-10 text-primary" />
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4 tracking-wide">
             Músicas
@@ -54,7 +54,7 @@ const MusicasSection = () => {
         </div>
 
         {/* Main Player */}
-        <div className="glass-strong rounded-3xl p-8 md:p-10 mb-8 animate-scale-in hover:glow-gold transition-all duration-500">
+        <div className="glass-strong rounded-3xl p-8 md:p-10 mb-8 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-rose-dust/10">
           {/* Album Art */}
           <div className="relative w-48 h-48 md:w-56 md:h-56 mx-auto mb-8">
             <div className={`w-full h-full rounded-full bg-gradient-to-br from-primary/30 to-rose/30 flex items-center justify-center ${isPlaying ? "animate-rotate-slow" : ""}`}>

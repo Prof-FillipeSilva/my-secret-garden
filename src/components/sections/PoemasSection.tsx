@@ -53,16 +53,16 @@ const PoemasSection = () => {
     <section className="min-h-screen py-16 px-4 relative">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-40 left-20 w-80 h-80 bg-rose/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold/5 rounded-full blur-[140px]" />
+        <div className="absolute top-40 left-20 w-80 h-80 bg-rose-dust/8 rounded-full blur-[120px]" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
       </div>
 
       <div className="container mx-auto max-w-3xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass glow-rose mb-6">
-            <PenLine className="w-10 h-10 text-rose" style={{ filter: "drop-shadow(0 0 10px hsl(310 40% 60% / 0.5))" }} />
-            <Sparkles className="absolute -top-2 -right-2 w-5 h-5 text-gold animate-twinkle" />
+          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass-soft shadow-romantic border border-rose-dust/20 mb-6">
+            <PenLine className="w-10 h-10 text-rose-dust" />
+            <Sparkles className="absolute -top-2 -right-2 w-5 h-5 text-primary/50 animate-twinkle" />
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4 tracking-wide">
             Poemas
@@ -78,11 +78,11 @@ const PoemasSection = () => {
           {poemas.map((poema, index) => (
             <article
               key={poema.id}
-              className="glass-strong rounded-3xl p-8 md:p-12 animate-fade-in-up hover:glow-rose transition-all duration-500"
+              className="glass-strong rounded-3xl p-8 md:p-12 animate-fade-in-up hover:shadow-romantic transition-all duration-500 border border-rose-dust/10"
               style={{ animationDelay: `${index * 0.15 + 0.2}s` }}
             >
               {/* Quote Icon */}
-              <Quote className="w-12 h-12 text-rose/20 mb-6" />
+              <Quote className="w-10 h-10 text-rose-dust/30 mb-6" />
 
               {/* Title */}
               <h3 className="font-display text-3xl md:text-4xl text-foreground mb-8 tracking-wide">
@@ -96,7 +96,7 @@ const PoemasSection = () => {
 
               {/* Author */}
               {poema.author && (
-                <p className="mt-10 text-right font-body text-rose font-light text-sm tracking-wider">
+                <p className="mt-10 text-right font-body text-rose-dust font-light text-sm tracking-wider">
                   — {poema.author}
                 </p>
               )}
@@ -104,9 +104,9 @@ const PoemasSection = () => {
               {/* Decorative line */}
               <div className="mt-10 flex justify-center">
                 <div className="flex items-center gap-3">
-                  <div className="w-16 h-px bg-gradient-to-r from-transparent to-gold/40" />
-                  <Sparkles className="w-4 h-4 text-gold/50" />
-                  <div className="w-16 h-px bg-gradient-to-l from-transparent to-gold/40" />
+                  <div className="w-16 h-px bg-gradient-to-r from-transparent to-rose-dust/30" />
+                  <Sparkles className="w-4 h-4 text-rose-dust/40" />
+                  <div className="w-16 h-px bg-gradient-to-l from-transparent to-rose-dust/30" />
                 </div>
               </div>
             </article>

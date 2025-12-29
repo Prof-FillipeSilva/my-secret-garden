@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    /* Elegant Romantic Theme */
-    --background: 225 30% 6%;
-    --foreground: 220 20% 95%;
+    /* Light Romantic Theme */
+    --background: 220 30% 97%;
+    --foreground: 222 50% 25%;
 
-    --card: 225 25% 10%;
-    --card-foreground: 220 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 50% 25%;
 
-    --popover: 225 25% 10%;
-    --popover-foreground: 220 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 50% 25%;
 
-    --primary: 222 63% 45%;
-    --primary-foreground: 220 20% 98%;
+    --primary: 222 63% 40%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 225 20% 14%;
-    --secondary-foreground: 220 20% 90%;
+    --secondary: 220 25% 92%;
+    --secondary-foreground: 222 50% 30%;
 
-    --muted: 225 20% 18%;
-    --muted-foreground: 220 15% 55%;
+    --muted: 220 20% 90%;
+    --muted-foreground: 220 15% 45%;
 
-    --accent: 310 40% 60%;
+    --accent: 330 45% 65%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 225 15% 20%;
-    --input: 225 15% 20%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
     --ring: 222 63% 50%;
 
     --radius: 1rem;
@@ -40,41 +40,41 @@
     /* Custom romantic colors */
     --royal-blue: 222 63% 33%;
     --royal-blue-light: 222 55% 55%;
-    --pearl-white: 220 20% 95%;
+    --pearl-white: 220 30% 98%;
     --blue-gray: 220 20% 50%;
-    --rose-dust: 310 40% 60%;
-    --rose-light: 310 50% 75%;
+    --rose-dust: 330 45% 65%;
+    --rose-light: 330 55% 80%;
     --soft-gold: 43 70% 55%;
     --gold-light: 43 65% 70%;
     
-    /* Deep romantic colors */
-    --midnight: 225 30% 6%;
-    --twilight: 225 25% 12%;
+    /* Soft romantic colors */
+    --cream: 40 30% 96%;
+    --blush: 330 40% 94%;
 
     /* Gradients */
-    --gradient-royal: linear-gradient(135deg, hsl(222 63% 20%) 0%, hsl(225 50% 8%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(225 25% 12%) 0%, hsl(225 25% 8%) 100%);
+    --gradient-royal: linear-gradient(135deg, hsl(222 63% 40%) 0%, hsl(222 50% 30%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 30% 98%) 100%);
     --gradient-gold: linear-gradient(135deg, hsl(43 70% 55%) 0%, hsl(35 60% 45%) 100%);
-    --gradient-rose: linear-gradient(135deg, hsl(310 40% 60%) 0%, hsl(320 45% 50%) 100%);
-    --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    --gradient-rose: linear-gradient(135deg, hsl(330 45% 65%) 0%, hsl(340 50% 55%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(220 30% 98%) 0%, hsl(330 30% 96%) 100%);
 
     /* Shadows */
-    --shadow-soft: 0 4px 30px -4px hsl(222 63% 33% / 0.2);
-    --shadow-romantic: 0 8px 40px -8px hsl(310 40% 60% / 0.15);
-    --shadow-glow: 0 0 60px hsl(222 63% 50% / 0.15);
-    --shadow-gold: 0 0 40px hsl(43 70% 55% / 0.2);
+    --shadow-soft: 0 4px 20px -4px hsl(222 63% 33% / 0.08);
+    --shadow-romantic: 0 8px 30px -8px hsl(330 45% 65% / 0.15);
+    --shadow-glow: 0 0 40px hsl(222 63% 50% / 0.1);
+    --shadow-gold: 0 0 30px hsl(43 70% 55% / 0.15);
 
     /* Typography */
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    --sidebar-background: 225 25% 10%;
-    --sidebar-foreground: 220 20% 90%;
-    --sidebar-primary: 222 63% 45%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 50% 30%;
+    --sidebar-primary: 222 63% 40%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 225 20% 14%;
-    --sidebar-accent-foreground: 220 20% 90%;
-    --sidebar-border: 225 15% 20%;
+    --sidebar-accent: 220 25% 95%;
+    --sidebar-accent-foreground: 222 50% 30%;
+    --sidebar-border: 220 20% 90%;
     --sidebar-ring: 222 63% 50%;
   }
 }
@@ -91,7 +91,7 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     font-family: var(--font-body);
-    background: linear-gradient(180deg, hsl(225 30% 6%) 0%, hsl(225 35% 4%) 100%);
+    background: linear-gradient(180deg, hsl(220 30% 98%) 0%, hsl(330 25% 97%) 100%);
     min-height: 100vh;
   }
 
@@ -148,32 +148,39 @@
     background-clip: text;
   }
 
-  /* Glass morphism */
+  /* Glass morphism - Light theme */
   .glass {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.8);
   }
 
   .glass-strong {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.9);
   }
 
-  /* Glow effects */
+  .glass-soft {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid hsl(330 45% 85% / 0.4);
+  }
+
+  /* Glow effects - Softer for light theme */
   .glow-gold {
-    box-shadow: 0 0 30px hsl(43 70% 55% / 0.3), 0 0 60px hsl(43 70% 55% / 0.1);
+    box-shadow: 0 4px 20px hsl(43 70% 55% / 0.2), 0 0 40px hsl(43 70% 55% / 0.08);
   }
 
   .glow-rose {
-    box-shadow: 0 0 30px hsl(310 40% 60% / 0.3), 0 0 60px hsl(310 40% 60% / 0.1);
+    box-shadow: 0 4px 20px hsl(330 45% 65% / 0.2), 0 0 40px hsl(330 45% 65% / 0.08);
   }
 
   .glow-blue {
-    box-shadow: 0 0 30px hsl(222 63% 50% / 0.3), 0 0 60px hsl(222 63% 50% / 0.1);
+    box-shadow: 0 4px 20px hsl(222 63% 50% / 0.15), 0 0 40px hsl(222 63% 50% / 0.06);
   }
 
   /* Elegant divider */
@@ -182,13 +189,17 @@
     background: linear-gradient(90deg, transparent 0%, hsl(var(--soft-gold) / 0.4) 50%, transparent 100%);
   }
 
-  /* Section backgrounds */
-  .section-dark {
-    background: linear-gradient(180deg, hsl(225 30% 6%) 0%, hsl(225 35% 4%) 100%);
+  /* Section backgrounds - Light theme */
+  .section-light {
+    background: linear-gradient(180deg, hsl(220 30% 98%) 0%, hsl(330 25% 97%) 100%);
+  }
+
+  .section-soft {
+    background: linear-gradient(180deg, hsl(330 30% 97%) 0%, hsl(220 30% 98%) 100%);
   }
 
   .section-royal {
-    background: linear-gradient(180deg, hsl(222 63% 18%) 0%, hsl(225 50% 10%) 100%);
+    background: linear-gradient(180deg, hsl(222 60% 95%) 0%, hsl(220 30% 98%) 100%);
   }
 }
 
