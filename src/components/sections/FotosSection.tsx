@@ -43,19 +43,19 @@ const FotosSection = () => {
   };
 
   return (
-    <section className="min-h-screen py-16 px-4 relative overflow-hidden">
+    <section className="min-h-screen py-20 px-4 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 -left-40 w-80 h-80 bg-rose-dust/8 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/3 -right-40 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 -left-40 w-80 h-80 bg-primary/6 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/3 -right-40 w-96 h-96 bg-sky/5 rounded-full blur-[120px]" />
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass-soft shadow-soft border border-rose-dust/20 mb-6">
+          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass-soft shadow-soft border border-primary/20 mb-6">
             <Image className="w-10 h-10 text-primary" />
-            <Sparkles className="absolute -top-2 -right-2 w-5 h-5 text-rose-dust animate-twinkle" />
+            <Sparkles className="absolute -top-2 -right-2 w-5 h-5 text-sky/60 animate-twinkle" />
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4 tracking-wide">
             Galeria de Fotos
@@ -72,7 +72,7 @@ const FotosSection = () => {
             <div
               key={foto.id}
               onClick={() => openLightbox(index)}
-              className="relative aspect-square overflow-hidden rounded-2xl cursor-pointer group animate-scale-in border border-rose-dust/10 shadow-soft"
+              className="relative aspect-square overflow-hidden rounded-2xl cursor-pointer group animate-scale-in border border-primary/10 shadow-soft"
               style={{ animationDelay: `${index * 0.08 + 0.2}s` }}
             >
               <img
@@ -81,24 +81,24 @@ const FotosSection = () => {
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
               />
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-royal/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* Hover content */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <div className="w-14 h-14 rounded-2xl glass-strong flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-500 shadow-soft">
-                  <Heart className="w-6 h-6 text-rose-dust" />
+                  <Heart className="w-6 h-6 text-primary" />
                 </div>
               </div>
 
               {/* Border glow on hover */}
-              <div className="absolute inset-0 rounded-2xl border border-rose-dust/0 group-hover:border-rose-dust/40 transition-all duration-500" />
+              <div className="absolute inset-0 rounded-2xl border border-primary/0 group-hover:border-primary/40 transition-all duration-500" />
             </div>
           ))}
         </div>
 
         {/* Empty State */}
         {fotos.length === 0 && (
-          <div className="text-center py-20 glass-soft rounded-2xl border border-rose-dust/10">
+          <div className="text-center py-20 glass-soft rounded-2xl border border-primary/10">
             <Image className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
             <p className="text-muted-foreground font-body">
               Nenhuma foto adicionada ainda
@@ -109,9 +109,9 @@ const FotosSection = () => {
         {/* Footer Note */}
         <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: "0.6s" }}>
           <p className="text-muted-foreground/60 text-sm font-body font-light flex items-center justify-center gap-2">
-            <span className="w-8 h-px bg-rose-dust/30" />
+            <span className="w-8 h-px bg-primary/30" />
             Cada foto conta uma história nossa
-            <span className="w-8 h-px bg-rose-dust/30" />
+            <span className="w-8 h-px bg-primary/30" />
           </p>
         </div>
       </div>
@@ -119,7 +119,7 @@ const FotosSection = () => {
       {/* Lightbox */}
       {selectedIndex !== null && (
         <div 
-          className="fixed inset-0 z-50 bg-foreground/90 backdrop-blur-xl flex items-center justify-center animate-fade-in"
+          className="fixed inset-0 z-50 bg-royal/95 backdrop-blur-xl flex items-center justify-center animate-fade-in"
           onClick={closeLightbox}
         >
           {/* Close Button */}
@@ -153,13 +153,13 @@ const FotosSection = () => {
               alt={fotos[selectedIndex].alt}
               className="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-romantic animate-scale-in"
             />
-            <p className="text-center text-muted-foreground/70 mt-6 font-body">
+            <p className="text-center text-white/70 mt-6 font-body">
               {fotos[selectedIndex].alt}
             </p>
           </div>
 
           {/* Counter */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 glass px-6 py-3 rounded-full font-body text-sm text-foreground/80">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 glass px-6 py-3 rounded-full font-body text-sm text-white/80">
             {selectedIndex + 1} / {fotos.length}
           </div>
         </div>

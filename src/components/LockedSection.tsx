@@ -54,8 +54,8 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
     <section className="min-h-screen py-16 px-4 flex items-center justify-center relative overflow-hidden">
       {/* Soft gradient background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 -left-40 w-80 h-80 bg-rose/10 rounded-full blur-[120px] animate-float-slow" />
-        <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-[140px] animate-float-slow" style={{ animationDelay: "4s" }} />
+        <div className="absolute top-1/4 -left-40 w-80 h-80 bg-sky/8 rounded-full blur-[120px] animate-float-slow" />
+        <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-primary/8 rounded-full blur-[140px] animate-float-slow" style={{ animationDelay: "4s" }} />
       </div>
 
       <div className="container mx-auto max-w-2xl text-center relative z-10">
@@ -63,7 +63,7 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
         <div className="relative inline-flex items-center justify-center w-24 h-24 mb-8 animate-float">
           <div className="absolute inset-0 rounded-3xl glass-soft shadow-romantic" />
           <div className="relative z-10">{icon}</div>
-          <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-white/80 border border-rose/20 flex items-center justify-center shadow-soft">
+          <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-white/90 border border-primary/20 flex items-center justify-center shadow-soft">
             <Lock className="w-4 h-4 text-primary" />
           </div>
         </div>
@@ -74,7 +74,7 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
         </h2>
 
         {/* Waiting Message */}
-        <div className="glass-soft rounded-3xl p-8 md:p-10 mb-10 animate-fade-in-up shadow-romantic" style={{ animationDelay: "0.2s" }}>
+        <div className="glass-soft rounded-3xl p-8 md:p-10 mb-10 animate-fade-in-up shadow-romantic border border-primary/10" style={{ animationDelay: "0.2s" }}>
           <p className="font-display text-xl md:text-2xl text-foreground mb-5 leading-relaxed">
             Ainda não é a hora…
           </p>
@@ -82,9 +82,9 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
             {waitingMessage}
           </p>
           <div className="flex items-center justify-center gap-3 my-6">
-            <div className="w-10 h-px bg-gradient-to-r from-transparent to-rose/40" />
-            <Sparkles className="w-4 h-4 text-rose" />
-            <div className="w-10 h-px bg-gradient-to-l from-transparent to-rose/40" />
+            <div className="w-10 h-px bg-gradient-to-r from-transparent to-primary/40" />
+            <Sparkles className="w-4 h-4 text-primary/60" />
+            <div className="w-10 h-px bg-gradient-to-l from-transparent to-primary/40" />
           </div>
           <p className="font-display text-lg text-foreground/80 tracking-wide">
             Falta pouco.<br />
@@ -94,7 +94,7 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
 
         {/* Countdown */}
         <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-          <p className="text-rose font-body text-xs mb-5 uppercase tracking-[0.3em] font-medium">
+          <p className="text-primary font-body text-xs mb-5 uppercase tracking-[0.3em] font-medium">
             Contagem Regressiva
           </p>
           <div className="flex justify-center gap-3 md:gap-5">
@@ -105,7 +105,7 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
               { value: timeLeft.seconds, label: "Seg" },
             ].map((item) => (
               <div key={item.label} className="text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl glass-soft flex items-center justify-center mb-2 shadow-soft border border-rose/10">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl glass-strong flex items-center justify-center mb-2 shadow-soft border border-primary/10">
                   <span className="font-display text-2xl md:text-3xl text-primary">
                     {String(item.value).padStart(2, "0")}
                   </span>
@@ -120,9 +120,9 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
 
         {/* Decorative hearts */}
         <div className="mt-12 flex justify-center items-center gap-3 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-          <Heart className="w-3 h-3 text-rose/50 animate-pulse-soft" />
-          <Heart className="w-5 h-5 text-rose/70 animate-pulse-soft" style={{ animationDelay: "0.5s" }} />
-          <Heart className="w-3 h-3 text-rose/50 animate-pulse-soft" style={{ animationDelay: "1s" }} />
+          <Heart className="w-3 h-3 text-primary/40 animate-pulse-soft" />
+          <Heart className="w-5 h-5 text-primary/60 animate-pulse-soft" style={{ animationDelay: "0.5s" }} />
+          <Heart className="w-3 h-3 text-primary/40 animate-pulse-soft" style={{ animationDelay: "1s" }} />
         </div>
       </div>
     </section>

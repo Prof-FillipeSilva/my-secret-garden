@@ -10,13 +10,13 @@ const SurpresaContent = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
   return (
-    <section className="min-h-screen py-16 px-4 relative overflow-hidden">
+    <section className="min-h-screen py-20 px-4 relative overflow-hidden">
       {/* Celebration background */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(12)].map((_, i) => (
           <Sparkles
             key={i}
-            className="absolute text-rose-dust/30 animate-twinkle"
+            className="absolute text-primary/30 animate-twinkle"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -25,8 +25,8 @@ const SurpresaContent = () => {
             }}
           />
         ))}
-        <div className="absolute top-20 left-10 w-80 h-80 bg-rose/8 rounded-full blur-[120px] animate-float-slow" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/8 rounded-full blur-[140px] animate-float-slow" style={{ animationDelay: "3s" }} />
+        <div className="absolute top-20 left-10 w-80 h-80 bg-sky/6 rounded-full blur-[120px] animate-float-slow" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/6 rounded-full blur-[140px] animate-float-slow" style={{ animationDelay: "3s" }} />
       </div>
 
       <div className="container mx-auto max-w-4xl relative z-10">
@@ -34,11 +34,11 @@ const SurpresaContent = () => {
         <div className="text-center mb-16 animate-blur-in">
           <div className="relative inline-flex items-center justify-center w-24 h-24 mb-8">
             <div className="absolute inset-0 rounded-3xl glass-soft shadow-romantic" />
-            <Gift className="w-12 h-12 text-rose-dust relative z-10 animate-float" />
+            <Gift className="w-12 h-12 text-primary relative z-10 animate-float" />
             <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-gold animate-pulse-soft" />
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4 tracking-wide">
-            <span className="text-gradient-rose">Sua Surpresa Chegou!</span>
+            <span className="text-gradient-royal">Sua Surpresa Chegou!</span>
           </h2>
           <p className="text-muted-foreground font-body font-light max-w-md mx-auto">
             Este momento foi preparado especialmente para você, com todo amor do mundo
@@ -47,21 +47,21 @@ const SurpresaContent = () => {
         </div>
 
         {/* Video Section */}
-        <div className="glass-strong rounded-3xl p-8 md:p-10 mb-8 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-rose/10">
+        <div className="glass-strong rounded-3xl p-8 md:p-10 mb-8 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-primary/10">
           <h3 className="font-display text-2xl text-foreground mb-6 flex items-center gap-3">
-            <Heart className="w-5 h-5 text-rose-dust" />
+            <Heart className="w-5 h-5 text-primary" />
             Vídeo de Aniversário
           </h3>
           
           {/* Video Player */}
-          <div className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-rose/10 border border-rose/10">
+          <div className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-sky/10 border border-primary/10">
             <div className="absolute inset-0 flex items-center justify-center">
               <button
                 onClick={() => setIsVideoPlaying(!isVideoPlaying)}
                 className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 ${
                   isVideoPlaying 
                     ? "bg-white/80 backdrop-blur-sm shadow-soft" 
-                    : "bg-gradient-to-br from-rose-dust to-primary shadow-romantic"
+                    : "bg-gradient-to-br from-primary to-sky shadow-romantic"
                 }`}
               >
                 {isVideoPlaying ? (
@@ -79,19 +79,19 @@ const SurpresaContent = () => {
         </div>
 
         {/* Audio Section */}
-        <div className="glass-strong rounded-3xl p-8 md:p-10 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-rose/10" style={{ animationDelay: "0.2s" }}>
+        <div className="glass-strong rounded-3xl p-8 md:p-10 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-primary/10" style={{ animationDelay: "0.2s" }}>
           <h3 className="font-display text-2xl text-foreground mb-6 flex items-center gap-3">
-            <Heart className="w-5 h-5 text-rose-dust" />
+            <Heart className="w-5 h-5 text-primary" />
             Áudio Especial
           </h3>
 
-          <div className="flex items-center gap-5 p-5 glass-soft rounded-2xl border border-rose/10">
+          <div className="flex items-center gap-5 p-5 glass-soft rounded-2xl border border-primary/10">
             <button
               onClick={() => setIsAudioPlaying(!isAudioPlaying)}
               className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${
                 isAudioPlaying 
-                  ? "bg-gradient-to-br from-rose-dust to-primary shadow-romantic" 
-                  : "bg-gradient-to-br from-primary to-rose-dust shadow-soft"
+                  ? "bg-gradient-to-br from-sky to-primary shadow-romantic" 
+                  : "bg-gradient-to-br from-primary to-sky shadow-soft"
               } hover:scale-105`}
             >
               {isAudioPlaying ? (
@@ -110,7 +110,7 @@ const SurpresaContent = () => {
                   <div 
                     className={`h-full rounded-full transition-all duration-500 ${
                       isAudioPlaying 
-                        ? "w-1/3 bg-gradient-to-r from-rose-dust to-primary animate-pulse" 
+                        ? "w-1/3 bg-gradient-to-r from-primary to-sky animate-pulse" 
                         : "w-0 bg-primary"
                     }`}
                   />
@@ -125,10 +125,10 @@ const SurpresaContent = () => {
 
         {/* Celebration Message */}
         <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-          <div className="inline-flex items-center gap-3 glass-strong px-8 py-4 rounded-full shadow-romantic border border-rose/20">
-            <Sparkles className="w-5 h-5 text-rose-dust" />
-            <span className="font-display text-xl text-gradient-rose">Feliz Aniversário!</span>
-            <Sparkles className="w-5 h-5 text-rose-dust" />
+          <div className="inline-flex items-center gap-3 glass-strong px-8 py-4 rounded-full shadow-romantic border border-primary/20">
+            <Sparkles className="w-5 h-5 text-primary" />
+            <span className="font-display text-xl text-gradient-royal">Feliz Aniversário!</span>
+            <Sparkles className="w-5 h-5 text-primary" />
           </div>
           <p className="text-muted-foreground font-body text-sm mt-6 font-light">
             Que este novo ciclo seja repleto de amor, alegria e realizações 💙
@@ -143,7 +143,7 @@ const SurpresaSection = () => {
   return (
     <LockedSection
       releaseDate={RELEASE_DATE}
-      icon={<Gift className="w-12 h-12 text-rose-dust" />}
+      icon={<Gift className="w-12 h-12 text-primary" />}
       title="🎁 Surpresa"
       waitingMessage="Este presente foi preparado com carinho, pensado em cada detalhe, e será revelado no instante exato em que o tempo fizer sentido."
     >

@@ -7,10 +7,10 @@ interface NavigationProps {
 }
 
 const navItems = [
-  { id: "audios", label: "Áudios", icon: Mic },
   { id: "poemas", label: "Poemas", icon: PenLine },
   { id: "fotos", label: "Fotos", icon: Image },
   { id: "musicas", label: "Músicas", icon: Music },
+  { id: "audios", label: "Áudios", icon: Mic },
   { id: "surpresa", label: "Surpresa", icon: Gift },
 ];
 
@@ -35,15 +35,15 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
     <>
       {/* Desktop Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass-strong shadow-soft py-3 border-b border-rose-dust/10" : "bg-transparent py-5"
+        isScrolled ? "glass-strong shadow-soft py-3 border-b border-primary/10" : "bg-transparent py-5"
       }`}>
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center gap-3 group cursor-pointer" onClick={() => handleNavigate("poemas")}>
               <div className="relative">
-                <Heart className="w-7 h-7 text-rose-dust transition-transform group-hover:scale-110" />
-                <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-primary/60 animate-twinkle" />
+                <Heart className="w-7 h-7 text-primary transition-transform group-hover:scale-110" />
+                <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-sky/60 animate-twinkle" />
               </div>
               <span className="font-display text-xl text-foreground tracking-wide hidden sm:block">
                 Nosso Amor
@@ -68,12 +68,12 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
                     }`}
                   >
                     {isActive && (
-                      <div className="absolute inset-0 rounded-xl bg-rose-dust/10 border border-rose-dust/20" />
+                      <div className="absolute inset-0 rounded-xl bg-primary/10 border border-primary/20" />
                     )}
-                    <Icon className={`w-4 h-4 relative z-10 ${isSurprise ? "text-rose-dust" : isActive ? "text-primary" : ""}`} />
+                    <Icon className={`w-4 h-4 relative z-10 ${isActive ? "text-primary" : ""}`} />
                     <span className="relative z-10">{item.label}</span>
                     {isSurprise && (
-                      <Sparkles className="w-3 h-3 text-rose-dust animate-pulse-soft relative z-10" />
+                      <Sparkles className="w-3 h-3 text-gold animate-pulse-soft relative z-10" />
                     )}
                   </button>
                 );
@@ -83,7 +83,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-3 glass-soft rounded-xl text-foreground transition-all duration-300 hover:shadow-soft border border-rose-dust/20"
+              className="md:hidden p-3 glass-soft rounded-xl text-foreground transition-all duration-300 hover:shadow-soft border border-primary/20"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -98,7 +98,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
             className="absolute inset-0 bg-background/60 backdrop-blur-xl"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div className="absolute top-20 left-4 right-4 glass-strong rounded-2xl p-6 animate-scale-in shadow-romantic border border-rose-dust/20">
+          <div className="absolute top-20 left-4 right-4 glass-strong rounded-2xl p-6 animate-scale-in shadow-romantic border border-primary/20">
             <div className="flex flex-col gap-2">
               {navItems.map((item, index) => {
                 const Icon = item.icon;
@@ -111,15 +111,15 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
                     onClick={() => handleNavigate(item.id)}
                     className={`flex items-center gap-4 px-5 py-4 rounded-xl font-body transition-all duration-300 animate-fade-in-up ${
                       isActive
-                        ? "bg-rose-dust/10 border border-rose-dust/20 text-foreground"
+                        ? "bg-primary/10 border border-primary/20 text-foreground"
                         : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                     }`}
                     style={{ animationDelay: `${index * 0.05}s` }}
                   >
-                    <Icon className={`w-5 h-5 ${isSurprise ? "text-rose-dust" : isActive ? "text-primary" : ""}`} />
+                    <Icon className={`w-5 h-5 ${isActive ? "text-primary" : ""}`} />
                     <span className="flex-1 text-left">{item.label}</span>
                     {isSurprise && (
-                      <Sparkles className="w-4 h-4 text-rose-dust animate-pulse-soft" />
+                      <Sparkles className="w-4 h-4 text-gold animate-pulse-soft" />
                     )}
                   </button>
                 );

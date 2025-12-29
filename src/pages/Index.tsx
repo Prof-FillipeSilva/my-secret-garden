@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import PasswordScreen from "@/components/PasswordScreen";
 import Navigation from "@/components/Navigation";
 import MainContent from "@/components/MainContent";
@@ -18,8 +18,11 @@ const Index = () => {
 
   const handleNavigate = (section: string) => {
     setActiveSection(section);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const handleSectionChange = useCallback((section: string) => {
+    setActiveSection(section);
+  }, []);
 
   if (!isAuthenticated) {
     return (
@@ -32,7 +35,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation activeSection={activeSection} onNavigate={handleNavigate} />
-      <MainContent activeSection={activeSection} />
+      <MainContent activeSection={activeSection} onSectionChange={handleSectionChange} />
     </div>
   );
 };
