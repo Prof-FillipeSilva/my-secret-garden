@@ -6,62 +6,66 @@
 
 @layer base {
   :root {
-    /* Light Romantic Theme */
-    --background: 220 30% 97%;
-    --foreground: 222 50% 25%;
+    /* Elegant Blue Theme - Pure Blue Palette */
+    --background: 220 40% 97%;
+    --foreground: 222 60% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 50% 25%;
+    --card-foreground: 222 60% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 50% 25%;
+    --popover-foreground: 222 60% 20%;
 
-    --primary: 222 63% 40%;
+    --primary: 222 65% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 25% 92%;
-    --secondary-foreground: 222 50% 30%;
+    --secondary: 220 35% 92%;
+    --secondary-foreground: 222 55% 25%;
 
-    --muted: 220 20% 90%;
-    --muted-foreground: 220 15% 45%;
+    --muted: 220 30% 88%;
+    --muted-foreground: 220 25% 40%;
 
-    --accent: 330 45% 65%;
+    --accent: 210 70% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 88%;
-    --input: 220 20% 88%;
-    --ring: 222 63% 50%;
+    --border: 220 30% 88%;
+    --input: 220 30% 88%;
+    --ring: 222 65% 55%;
 
     --radius: 1rem;
 
-    /* Custom romantic colors */
-    --royal-blue: 222 63% 33%;
-    --royal-blue-light: 222 55% 55%;
-    --pearl-white: 220 30% 98%;
-    --blue-gray: 220 20% 50%;
-    --rose-dust: 330 45% 65%;
-    --rose-light: 330 55% 80%;
+    /* Custom Blue Colors */
+    --royal: 222 65% 33%;
+    --royal-light: 222 55% 50%;
+    --royal-bright: 222 70% 58%;
+    --royal-soft: 222 45% 70%;
+    --royal-pale: 222 40% 85%;
+    
+    --pearl: 220 40% 98%;
+    --blue-gray: 220 25% 55%;
     --soft-gold: 43 70% 55%;
     --gold-light: 43 65% 70%;
     
-    /* Soft romantic colors */
-    --cream: 40 30% 96%;
-    --blush: 330 40% 94%;
+    --sky: 210 80% 60%;
+    --sky-soft: 210 60% 75%;
+    --ocean: 215 70% 45%;
+    --ocean-deep: 220 65% 35%;
 
-    /* Gradients */
-    --gradient-royal: linear-gradient(135deg, hsl(222 63% 40%) 0%, hsl(222 50% 30%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 30% 98%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(43 70% 55%) 0%, hsl(35 60% 45%) 100%);
-    --gradient-rose: linear-gradient(135deg, hsl(330 45% 65%) 0%, hsl(340 50% 55%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(220 30% 98%) 0%, hsl(330 30% 96%) 100%);
+    /* Gradients - All Blue */
+    --gradient-royal: linear-gradient(135deg, hsl(222 65% 45%) 0%, hsl(222 55% 35%) 100%);
+    --gradient-sky: linear-gradient(135deg, hsl(210 80% 60%) 0%, hsl(222 65% 50%) 100%);
+    --gradient-ocean: linear-gradient(135deg, hsl(215 70% 50%) 0%, hsl(222 60% 40%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 40% 98%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(220 40% 98%) 0%, hsl(222 35% 96%) 100%);
+    --gradient-elegant: linear-gradient(135deg, hsl(222 45% 92%) 0%, hsl(210 50% 95%) 100%);
 
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(222 63% 33% / 0.08);
-    --shadow-romantic: 0 8px 30px -8px hsl(330 45% 65% / 0.15);
-    --shadow-glow: 0 0 40px hsl(222 63% 50% / 0.1);
+    /* Shadows - Blue tones */
+    --shadow-soft: 0 4px 20px -4px hsl(222 65% 33% / 0.1);
+    --shadow-romantic: 0 8px 30px -8px hsl(222 65% 45% / 0.2);
+    --shadow-glow: 0 0 40px hsl(222 65% 55% / 0.12);
     --shadow-gold: 0 0 30px hsl(43 70% 55% / 0.15);
 
     /* Typography */
@@ -69,13 +73,13 @@
     --font-body: 'Montserrat', sans-serif;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 222 50% 30%;
-    --sidebar-primary: 222 63% 40%;
+    --sidebar-foreground: 222 55% 25%;
+    --sidebar-primary: 222 65% 45%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 220 25% 95%;
-    --sidebar-accent-foreground: 222 50% 30%;
-    --sidebar-border: 220 20% 90%;
-    --sidebar-ring: 222 63% 50%;
+    --sidebar-accent: 220 35% 95%;
+    --sidebar-accent-foreground: 222 55% 25%;
+    --sidebar-border: 220 30% 90%;
+    --sidebar-ring: 222 65% 55%;
   }
 }
 
@@ -91,7 +95,7 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     font-family: var(--font-body);
-    background: linear-gradient(180deg, hsl(220 30% 98%) 0%, hsl(330 25% 97%) 100%);
+    background: linear-gradient(180deg, hsl(220 40% 98%) 0%, hsl(222 35% 96%) 100%);
     min-height: 100vh;
   }
 
@@ -114,12 +118,16 @@
     background: var(--gradient-royal);
   }
 
-  .gradient-card {
-    background: var(--gradient-card);
+  .gradient-sky {
+    background: var(--gradient-sky);
   }
 
-  .gradient-glass {
-    background: var(--gradient-glass);
+  .gradient-ocean {
+    background: var(--gradient-ocean);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
   }
 
   .shadow-romantic {
@@ -134,72 +142,86 @@
     box-shadow: var(--shadow-glow);
   }
 
+  .text-gradient-royal {
+    background: var(--gradient-royal);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-sky {
+    background: var(--gradient-sky);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .text-gradient-gold {
-    background: var(--gradient-gold);
+    background: linear-gradient(135deg, hsl(43 70% 55%) 0%, hsl(35 60% 45%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .text-gradient-rose {
-    background: var(--gradient-rose);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Glass morphism - Light theme */
+  /* Glass morphism - Blue tinted */
   .glass {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.85);
   }
 
   .glass-strong {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.95);
   }
 
   .glass-soft {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid hsl(330 45% 85% / 0.4);
+    border: 1px solid hsl(222 45% 85% / 0.5);
   }
 
-  /* Glow effects - Softer for light theme */
+  .glass-blue {
+    background: hsl(222 50% 97% / 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(222 45% 88% / 0.6);
+  }
+
+  /* Glow effects - Blue */
+  .glow-royal {
+    box-shadow: 0 4px 20px hsl(222 65% 50% / 0.25), 0 0 40px hsl(222 65% 50% / 0.1);
+  }
+
+  .glow-sky {
+    box-shadow: 0 4px 20px hsl(210 80% 60% / 0.25), 0 0 40px hsl(210 80% 60% / 0.1);
+  }
+
   .glow-gold {
     box-shadow: 0 4px 20px hsl(43 70% 55% / 0.2), 0 0 40px hsl(43 70% 55% / 0.08);
-  }
-
-  .glow-rose {
-    box-shadow: 0 4px 20px hsl(330 45% 65% / 0.2), 0 0 40px hsl(330 45% 65% / 0.08);
-  }
-
-  .glow-blue {
-    box-shadow: 0 4px 20px hsl(222 63% 50% / 0.15), 0 0 40px hsl(222 63% 50% / 0.06);
   }
 
   /* Elegant divider */
   .divider-elegant {
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, hsl(var(--soft-gold) / 0.4) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, hsl(222 55% 70% / 0.5) 50%, transparent 100%);
   }
 
-  /* Section backgrounds - Light theme */
+  /* Section backgrounds */
   .section-light {
-    background: linear-gradient(180deg, hsl(220 30% 98%) 0%, hsl(330 25% 97%) 100%);
+    background: linear-gradient(180deg, hsl(220 40% 98%) 0%, hsl(222 35% 96%) 100%);
   }
 
-  .section-soft {
-    background: linear-gradient(180deg, hsl(330 30% 97%) 0%, hsl(220 30% 98%) 100%);
+  .section-blue {
+    background: linear-gradient(180deg, hsl(222 40% 96%) 0%, hsl(220 38% 97%) 100%);
   }
 
   .section-royal {
-    background: linear-gradient(180deg, hsl(222 60% 95%) 0%, hsl(220 30% 98%) 100%);
+    background: linear-gradient(180deg, hsl(222 45% 95%) 0%, hsl(220 40% 97%) 100%);
   }
 }
 
@@ -307,10 +329,10 @@
 
 @keyframes glow {
   0%, 100% { 
-    box-shadow: 0 0 20px hsl(43 70% 55% / 0.2), 0 0 40px hsl(43 70% 55% / 0.1);
+    box-shadow: 0 0 20px hsl(222 65% 55% / 0.2), 0 0 40px hsl(222 65% 55% / 0.1);
   }
   50% { 
-    box-shadow: 0 0 30px hsl(43 70% 55% / 0.4), 0 0 60px hsl(43 70% 55% / 0.2);
+    box-shadow: 0 0 30px hsl(222 65% 55% / 0.4), 0 0 60px hsl(222 65% 55% / 0.2);
   }
 }
 
@@ -334,26 +356,26 @@
   animation: shake 0.3s ease-in-out;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Blue themed */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(225 25% 10%);
+  background: hsl(220 35% 95%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--soft-gold) / 0.3);
+  background: hsl(222 55% 70% / 0.5);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--soft-gold) / 0.5);
+  background: hsl(222 55% 60% / 0.7);
 }
 
 /* Selection styling */
 ::selection {
-  background: hsl(var(--rose-dust) / 0.3);
-  color: hsl(var(--foreground));
+  background: hsl(222 65% 50% / 0.25);
+  color: hsl(222 60% 20%);
 }

@@ -31,17 +31,17 @@ const MusicasSection = () => {
   };
 
   return (
-    <section className="min-h-screen py-16 px-4 relative">
+    <section className="min-h-screen py-20 px-4 relative">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 right-20 w-80 h-80 bg-primary/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-40 left-20 w-96 h-96 bg-rose-dust/8 rounded-full blur-[140px]" />
+        <div className="absolute bottom-40 left-20 w-96 h-96 bg-sky/6 rounded-full blur-[140px]" />
       </div>
 
       <div className="container mx-auto max-w-4xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass-soft shadow-soft border border-rose-dust/20 mb-6">
+          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass-soft shadow-soft border border-primary/20 mb-6">
             <Music className="w-10 h-10 text-primary" />
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4 tracking-wide">
@@ -54,12 +54,12 @@ const MusicasSection = () => {
         </div>
 
         {/* Main Player */}
-        <div className="glass-strong rounded-3xl p-8 md:p-10 mb-8 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-rose-dust/10">
+        <div className="glass-strong rounded-3xl p-8 md:p-10 mb-8 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-primary/10">
           {/* Album Art */}
           <div className="relative w-48 h-48 md:w-56 md:h-56 mx-auto mb-8">
-            <div className={`w-full h-full rounded-full bg-gradient-to-br from-primary/30 to-rose/30 flex items-center justify-center ${isPlaying ? "animate-rotate-slow" : ""}`}>
+            <div className={`w-full h-full rounded-full bg-gradient-to-br from-primary/30 to-sky/30 flex items-center justify-center ${isPlaying ? "animate-rotate-slow" : ""}`}>
               <div className="w-4/5 h-4/5 rounded-full glass flex items-center justify-center">
-                <Disc className="w-16 h-16 text-gold/60" />
+                <Disc className="w-16 h-16 text-primary/60" />
               </div>
               {/* Center hole */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-background" />
@@ -67,7 +67,7 @@ const MusicasSection = () => {
             
             {/* Glow effect when playing */}
             {isPlaying && (
-              <div className="absolute inset-0 rounded-full glow-gold animate-pulse-soft opacity-50" />
+              <div className="absolute inset-0 rounded-full glow-royal animate-pulse-soft opacity-50" />
             )}
           </div>
 
@@ -87,7 +87,7 @@ const MusicasSection = () => {
             <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden">
               <div 
                 className={`h-full rounded-full transition-all duration-500 ${
-                  isPlaying ? "w-1/4 bg-gradient-to-r from-gold to-rose animate-pulse" : "w-0 bg-gold"
+                  isPlaying ? "w-1/4 bg-gradient-to-r from-primary to-sky animate-pulse" : "w-0 bg-primary"
                 }`}
               />
             </div>
@@ -98,7 +98,7 @@ const MusicasSection = () => {
           <div className="flex items-center justify-center gap-6">
             <button
               onClick={playPrevious}
-              className="w-14 h-14 rounded-2xl glass flex items-center justify-center text-foreground hover:glow-gold transition-all duration-300"
+              className="w-14 h-14 rounded-2xl glass flex items-center justify-center text-foreground hover:glow-royal transition-all duration-300"
             >
               <SkipBack className="w-5 h-5" />
             </button>
@@ -107,8 +107,8 @@ const MusicasSection = () => {
               onClick={togglePlay}
               className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-105 ${
                 isPlaying 
-                  ? "bg-gradient-to-br from-rose to-primary glow-rose" 
-                  : "bg-gradient-to-br from-gold to-rose glow-gold"
+                  ? "bg-gradient-to-br from-sky to-primary glow-royal" 
+                  : "bg-gradient-to-br from-primary to-sky glow-royal"
               }`}
             >
               {isPlaying ? (
@@ -120,7 +120,7 @@ const MusicasSection = () => {
 
             <button
               onClick={playNext}
-              className="w-14 h-14 rounded-2xl glass flex items-center justify-center text-foreground hover:glow-gold transition-all duration-300"
+              className="w-14 h-14 rounded-2xl glass flex items-center justify-center text-foreground hover:glow-royal transition-all duration-300"
             >
               <SkipForward className="w-5 h-5" />
             </button>
@@ -130,13 +130,13 @@ const MusicasSection = () => {
           <div className="flex items-center justify-center gap-3 mt-8">
             <Volume2 className="w-4 h-4 text-muted-foreground" />
             <div className="w-24 h-1.5 bg-secondary rounded-full">
-              <div className="w-3/4 h-full bg-gold/60 rounded-full" />
+              <div className="w-3/4 h-full bg-primary/60 rounded-full" />
             </div>
           </div>
         </div>
 
         {/* Playlist */}
-        <div className="glass-strong rounded-2xl p-6 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+        <div className="glass-strong rounded-2xl p-6 animate-fade-in-up border border-primary/10" style={{ animationDelay: "0.3s" }}>
           <h4 className="font-display text-xl text-foreground mb-6 px-2">
             Playlist
           </h4>
@@ -147,13 +147,13 @@ const MusicasSection = () => {
                 onClick={() => selectMusic(index)}
                 className={`w-full flex items-center gap-4 p-4 rounded-xl transition-all duration-300 ${
                   currentIndex === index
-                    ? "glass glow-gold"
+                    ? "glass glow-royal"
                     : "hover:bg-secondary/30"
                 }`}
               >
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
                   currentIndex === index 
-                    ? "bg-gradient-to-br from-gold to-rose" 
+                    ? "bg-gradient-to-br from-primary to-sky" 
                     : "bg-secondary/50"
                 }`}>
                   {currentIndex === index && isPlaying ? (
@@ -174,7 +174,7 @@ const MusicasSection = () => {
                   )}
                 </div>
                 <div className="flex-1 text-left">
-                  <p className={`font-body font-medium truncate ${currentIndex === index ? "text-gold" : "text-foreground"}`}>
+                  <p className={`font-body font-medium truncate ${currentIndex === index ? "text-primary" : "text-foreground"}`}>
                     {musica.title}
                   </p>
                   <p className="font-body text-sm text-muted-foreground truncate">
@@ -182,7 +182,7 @@ const MusicasSection = () => {
                   </p>
                 </div>
                 {currentIndex === index && (
-                  <Heart className="w-5 h-5 text-rose animate-pulse-soft" />
+                  <Heart className="w-5 h-5 text-primary animate-pulse-soft" />
                 )}
               </button>
             ))}
@@ -192,9 +192,9 @@ const MusicasSection = () => {
         {/* Footer Note */}
         <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: "0.5s" }}>
           <p className="text-muted-foreground/50 text-sm font-body font-light flex items-center justify-center gap-2">
-            <span className="w-8 h-px bg-gold/30" />
+            <span className="w-8 h-px bg-primary/30" />
             Cada nota é uma memória nossa
-            <span className="w-8 h-px bg-gold/30" />
+            <span className="w-8 h-px bg-primary/30" />
           </p>
         </div>
       </div>

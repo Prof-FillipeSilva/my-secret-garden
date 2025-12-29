@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Mic, Play, Pause, Volume2, Waves } from "lucide-react";
 import LockedSection from "@/components/LockedSection";
 
@@ -26,17 +26,17 @@ const AudiosContent = () => {
   };
 
   return (
-    <section className="min-h-screen py-16 px-4 relative">
+    <section className="min-h-screen py-20 px-4 relative">
       {/* Background gradient orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-40 left-10 w-96 h-96 bg-rose/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-40 left-10 w-96 h-96 bg-sky/5 rounded-full blur-[120px]" />
       </div>
 
       <div className="container mx-auto max-w-4xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass-soft shadow-romantic mb-6">
+          <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass-soft shadow-romantic mb-6 border border-primary/20">
             <Mic className="w-10 h-10 text-primary" />
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4 tracking-wide">
@@ -53,7 +53,7 @@ const AudiosContent = () => {
           {audios.map((audio, index) => (
             <div
               key={audio.id}
-              className="glass-strong rounded-2xl p-6 hover:shadow-romantic transition-all duration-500 animate-fade-in-up group border border-rose/10"
+              className="glass-strong rounded-2xl p-6 hover:shadow-romantic transition-all duration-500 animate-fade-in-up group border border-primary/10"
               style={{ animationDelay: `${index * 0.1 + 0.2}s` }}
             >
               <div className="flex items-center gap-5">
@@ -62,8 +62,8 @@ const AudiosContent = () => {
                   onClick={() => togglePlay(audio.id)}
                   className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${
                     playingId === audio.id 
-                      ? "bg-gradient-to-br from-rose-dust to-primary shadow-romantic" 
-                      : "bg-gradient-to-br from-primary to-primary/80 hover:from-rose-dust hover:to-primary"
+                      ? "bg-gradient-to-br from-sky to-primary shadow-romantic" 
+                      : "bg-gradient-to-br from-primary to-sky hover:shadow-romantic"
                   } group-hover:scale-105`}
                 >
                   {playingId === audio.id ? (
@@ -83,7 +83,7 @@ const AudiosContent = () => {
                       <div 
                         className={`h-full rounded-full transition-all duration-500 ${
                           playingId === audio.id 
-                            ? "w-1/3 bg-gradient-to-r from-rose-dust to-primary animate-pulse" 
+                            ? "w-1/3 bg-gradient-to-r from-primary to-sky animate-pulse" 
                             : "w-0 bg-primary"
                         }`}
                       />
@@ -97,7 +97,7 @@ const AudiosContent = () => {
                 {/* Waveform indicator */}
                 <div className="hidden md:flex items-center gap-1">
                   {playingId === audio.id ? (
-                    <Waves className="w-5 h-5 text-rose-dust animate-pulse" />
+                    <Waves className="w-5 h-5 text-primary animate-pulse" />
                   ) : (
                     <Volume2 className="w-5 h-5 text-muted-foreground" />
                   )}
@@ -111,7 +111,7 @@ const AudiosContent = () => {
 
         {/* Empty State */}
         {audios.length === 0 && (
-          <div className="text-center py-20 glass-soft rounded-2xl border border-rose/10">
+          <div className="text-center py-20 glass-soft rounded-2xl border border-primary/10">
             <Mic className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
             <p className="text-muted-foreground font-body">
               Nenhum áudio adicionado ainda
@@ -122,9 +122,9 @@ const AudiosContent = () => {
         {/* Footer Note */}
         <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: "0.5s" }}>
           <p className="text-muted-foreground/60 text-sm font-body font-light flex items-center justify-center gap-2">
-            <span className="w-8 h-px bg-rose/30" />
+            <span className="w-8 h-px bg-primary/30" />
             Cada voz carrega um pedacinho de amor
-            <span className="w-8 h-px bg-rose/30" />
+            <span className="w-8 h-px bg-primary/30" />
           </p>
         </div>
       </div>
