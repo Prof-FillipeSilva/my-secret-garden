@@ -11,40 +11,164 @@ interface Escrita {
 const escritas: Escrita[] = [
   {
     id: "1",
-    title: "Nosso Amor",
-    content: `Em cada amanhecer, penso em você,
-Na doçura do seu olhar, no calor do seu abraço.
-Você é meu porto seguro, minha paz,
-O amor que preenche cada espaço.
+    title: "Impasse",
+    content: `Mesmo assim, sem entender
+Viajei do céu ao inferno
+Tudo isso então se deu
+Ao findar o mês eterno
 
-Nas noites silenciosas, sussurro seu nome,
-E o vento leva meus sentimentos até você.
-Somos duas almas que se encontraram,
-Destinadas a juntas florescer.`,
-    author: "Para você, com amor"
+Presente, presença, pretexto
+Presepadas, risadas
+Uma brecha não prevista
+Uma muralha abalada
+Um apego coibido
+Uma lâmina quebrada
+
+Duas linhas que não cruzam
+Foram criadas pelo impasse
+Sentimentos e palavras retidos
+Antes que a língua queimasse
+
+Eu não sei se é o início, meio ou fim
+Não sei se está perto, longe ou em mim
+Só sei, que ainda está passando por aqui
+E não tenho nem ideia de como fazer sair
+
+Tentando saber o que aconteceu
+Me vejo num caminho sem direção
+Se esconder, se afastar? Não!
+Distância não apaga conexão
+
+Caso concreto, frio e lento
+Mexe com o dado imutável
+O todo poderoso tempo
+
+Que vai de zero a cem tão rápido
+E quem tentou controla-lo, falhou
+Mas traz conforto em si mesmo
+Pois sempre que choveu, parou`,
+    author: "O primeiro"
   },
   {
     id: "2",
-    title: "Promessa Eterna",
-    content: `Prometo estar ao seu lado,
-Nos dias de sol e tempestade.
-Prometo amar cada parte de você,
-Com toda sinceridade.
+    title: "Anjo - Saulo",
+    content: `Hoje eu acordei mais cedo
+E fiquei te olhando dormir
+Imaginei algum suposto medo
+Para que tão logo
+Pudesse te cobrir
 
-Juntos construiremos nosso mundo,
-Feito de sonhos e realidade.
-Um amor que cresce a cada dia,
-Uma história de cumplicidade.`,
-    author: "Sempre seu"
+Tenho cuidado de você
+Todo esse tempo
+Você está sob o meu abraço
+E minha proteção
+Tenho visto você errar e crescer
+Amar e voar
+Você sabe onde pousar
+
+Ao acordar já terei partido
+Ficarei de longe, escondido
+Mas sempre perto, decerto
+Como se eu fosse humano, vivo
+Vivendo pra te cuidar, te proteger
+Sem você me ver
+Sem saber quem sou
+Se sou anjo
+Ou se sou
+Seu amor`,
+    author: "Essa música tá aqui na playlist, também"
   },
   {
     id: "3",
-    title: "Você",
-    content: `Você é a melodia que embala meus dias,
-O sorriso que aquece meu coração.
-Em você encontrei meu lar,
-Minha mais bela canção.`,
-    author: "Com todo meu amor"
+    title: "Who Knows",
+    content: `Eu hoje quis dormir, mas a cabeça quis pensar
+Deitado estava ali, mas com você, pra variar
+Quis saber se era real, se realmente aconteceu
+Quando o coração disparou, e o copo na mão tremeu
+
+Eu brinquei, você brincou
+Mas no fundo era de verdade
+A mão boba descontou
+O que não parou na vontade
+
+Vontade de ter, te amar
+Te sentir e te beijar
+De grudar e não soltar
+De te viver, te cuidar
+
+Te respeito e amo demais
+Até no jeito de te tocar
+De sentir o seu peito no meu
+De ouvir o seu suspirar
+
+Nenhum momento hesitei
+Pois no fundo ainda sei
+Que aí dentro também tem
+Que é recíproco, também
+
+Mas um dia vai rolar
+Talvez para me libertar
+Talvez para me consolar
+Talvez parar de sonhar
+Talvez parar de ligar
+E ainda assim vai rolar
+
+Talvez para consertar
+Tudo que estava lá
+Que me colocou a pensar
+Vendo a noite passar
+
+Ainda assim vai rolar...
+
+Ou talvez pra te mostrar
+Alguém bom em te amar
+Te agarrar, te pegar
+Cama, parede ou sofá
+
+Ainda assim vai rolar...
+
+Você pode decidir
+Sem precisar se punir
+Pois o que está aqui
+Eu sei que está aí
+
+Por fim quero te falar
+Que em qualquer dia ou lugar
+No sol, na chuva ou no mar
+Ainda assim vai rolar...
+
+Who Knows?`,
+    author: "Essa música também tá aqui, mas o poema foi eu que fiz kkk"
+  },
+  {
+    id: "4",
+    title: "Nós",
+    content: `Cabe um universo inteiro e lindo entre o nosso olhar
+Coisas que 5 minutinhos não são capazes de explicar
+Apenas um “adolescente” bobão que vive pensando demais
+Mãos trêmulas, frio na barriga, e um nervoso “até mais”
+  
+Nunca precisei dizer, só bastava mesmo te olhar
+Sei que sabe e vê o que tem aqui, nosso idioma particular
+Infinito particular, onde além de olhar, amar e cuidar
+Posso te visitar sempre que quiser, além de sonhar
+ 
+E por falar em sonho, acho que você devia sair daqui
+Às vezes te vejo aqui do meu lado, e ainda nem dormi
+Sua ausência tomou forma, e nem falo isso por drama
+Tá aqui me chamando de chato, toda noite na mesma cama
+ 
+Sempre quis te mandar flores, mas seria estranho, não?
+Principalmente, que me conhecendo, chegariam de caminhão
+Meu estilo 7 ou 70, você sabe como é
+Mas prefiro conquistar pela boca: chocomenta, trufas e café
+ 
+Foi fácil acertar suas preferidas, porque são as minhas também
+E se tratando de orquídeas, nas azuis sempre tem você, meu bem
+Mas que eu gabaritei na teoria, já está cansada de saber
+Mas falando agora da prática, quando vai deixar eu fazer?
+`,
+    author: "Esse eu não lembrava, mas tava guardado aqui, ficou legal, também kkk"
   }
 ];
 
