@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import PasswordScreen from "@/components/PasswordScreen";
 import Navigation from "@/components/Navigation";
 import MainContent from "@/components/MainContent";
@@ -7,6 +7,7 @@ const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeSection, setActiveSection] = useState("inicio");
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const mainContentRef = useRef<HTMLDivElement>(null);
 
   const handlePasswordSuccess = () => {
     setIsTransitioning(true);
@@ -18,6 +19,16 @@ const Index = () => {
 
   const handleNavigate = (section: string) => {
     setActiveSection(section);
+    // Scroll to section
+    const element = document.getElementById(section);
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   const handleSectionChange = useCallback((section: string) => {
@@ -33,7 +44,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div ref={mainContentRef} className="min-h-screen bg-background overflow-x-hidden">
       <Navigation activeSection={activeSection} onNavigate={handleNavigate} />
       <MainContent activeSection={activeSection} onSectionChange={handleSectionChange} />
     </div>
