@@ -67,10 +67,10 @@ const PasswordScreen = ({ onSuccess }: PasswordScreenProps) => {
               <Heart className="w-10 h-10 text-primary" />
             </div>
             <h1 className="font-display text-3xl md:text-4xl text-foreground mb-3 tracking-wide">
-              Um lugar só nosso
+              To my favorite person in the world
             </h1>
             <p className="text-muted-foreground font-body text-sm font-light">
-              Digite a senha para entrar neste mundo especial
+              Digite a senha 
             </p>
           </div>
 
