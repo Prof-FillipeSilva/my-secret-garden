@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Mic, PenLine, Image, Music, Gift, Menu, X, Heart, Sparkles } from "lucide-react";
+import { PenLine, Image, Music, Gift, Sparkles, Menu, X, Heart, Home } from "lucide-react";
 
 interface NavigationProps {
   activeSection: string;
@@ -7,11 +7,12 @@ interface NavigationProps {
 }
 
 const navItems = [
-  { id: "poemas", label: "Poemas", icon: PenLine },
+  { id: "inicio", label: "Início", icon: Home },
+  { id: "escritas", label: "Escritas", icon: PenLine },
   { id: "fotos", label: "Fotos", icon: Image },
   { id: "musicas", label: "Músicas", icon: Music },
-  { id: "audios", label: "Áudios", icon: Mic },
-  { id: "surpresa", label: "Surpresa", icon: Gift },
+  { id: "surpresa", label: "Surpresa", icon: Sparkles },
+  { id: "presentes", label: "Presentes", icon: Gift },
 ];
 
 const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
@@ -40,10 +41,10 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center gap-3 group cursor-pointer" onClick={() => handleNavigate("poemas")}>
+            <div className="flex items-center gap-3 group cursor-pointer" onClick={() => handleNavigate("inicio")}>
               <div className="relative">
                 <Heart className="w-7 h-7 text-primary transition-transform group-hover:scale-110" />
-                <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-sky/60 animate-twinkle" />
+                <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-accent/60 animate-twinkle" />
               </div>
               <span className="font-display text-xl text-foreground tracking-wide hidden sm:block">
                 Nosso Amor
@@ -51,17 +52,17 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.id;
-                const isSurprise = item.id === "surpresa";
+                const isLocked = item.id === "surpresa" || item.id === "presentes";
 
                 return (
                   <button
                     key={item.id}
                     onClick={() => handleNavigate(item.id)}
-                    className={`relative flex items-center gap-2 px-5 py-2.5 rounded-xl font-body text-sm transition-all duration-300 ${
+                    className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-body text-sm transition-all duration-300 ${
                       isActive
                         ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground"
@@ -72,7 +73,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
                     )}
                     <Icon className={`w-4 h-4 relative z-10 ${isActive ? "text-primary" : ""}`} />
                     <span className="relative z-10">{item.label}</span>
-                    {isSurprise && (
+                    {isLocked && (
                       <Sparkles className="w-3 h-3 text-gold animate-pulse-soft relative z-10" />
                     )}
                   </button>
@@ -103,7 +104,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
               {navItems.map((item, index) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.id;
-                const isSurprise = item.id === "surpresa";
+                const isLocked = item.id === "surpresa" || item.id === "presentes";
 
                 return (
                   <button
@@ -118,7 +119,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
                   >
                     <Icon className={`w-5 h-5 ${isActive ? "text-primary" : ""}`} />
                     <span className="flex-1 text-left">{item.label}</span>
-                    {isSurprise && (
+                    {isLocked && (
                       <Sparkles className="w-4 h-4 text-gold animate-pulse-soft" />
                     )}
                   </button>

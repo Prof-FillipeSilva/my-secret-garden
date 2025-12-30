@@ -54,7 +54,7 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
     <section className="min-h-screen py-16 px-4 flex items-center justify-center relative overflow-hidden">
       {/* Soft gradient background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 -left-40 w-80 h-80 bg-sky/8 rounded-full blur-[120px] animate-float-slow" />
+        <div className="absolute top-1/4 -left-40 w-80 h-80 bg-accent/8 rounded-full blur-[120px] animate-float-slow" />
         <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-primary/8 rounded-full blur-[140px] animate-float-slow" style={{ animationDelay: "4s" }} />
       </div>
 
@@ -88,7 +88,7 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
           </div>
           <p className="font-display text-lg text-foreground/80 tracking-wide">
             Falta pouco.<br />
-            E quando chegar, será só para você. 💙
+            E quando chegar, será só para você. 💕
           </p>
         </div>
 

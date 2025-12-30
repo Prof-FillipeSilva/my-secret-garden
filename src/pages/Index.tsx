@@ -5,7 +5,7 @@ import MainContent from "@/components/MainContent";
 
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [activeSection, setActiveSection] = useState("poemas");
+  const [activeSection, setActiveSection] = useState("inicio");
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handlePasswordSuccess = () => {

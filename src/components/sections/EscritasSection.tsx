@@ -1,14 +1,14 @@
 import { PenLine, Quote, Sparkles } from "lucide-react";
 
-interface Poema {
+interface Escrita {
   id: string;
   title: string;
   content: string;
   author?: string;
 }
 
-// Poemas configuráveis - adicione seus poemas aqui
-const poemas: Poema[] = [
+// Escritas configuráveis - adicione suas escritas aqui
+const escritas: Escrita[] = [
   {
     id: "1",
     title: "Nosso Amor",
@@ -48,12 +48,12 @@ Minha mais bela canção.`,
   }
 ];
 
-const PoemasSection = () => {
+const EscritasSection = () => {
   return (
     <section className="min-h-screen py-20 px-4 relative">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-40 left-20 w-80 h-80 bg-sky/6 rounded-full blur-[120px]" />
+        <div className="absolute top-40 left-20 w-80 h-80 bg-accent/6 rounded-full blur-[120px]" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-[140px]" />
       </div>
 
@@ -62,10 +62,10 @@ const PoemasSection = () => {
         <div className="text-center mb-16 animate-fade-in-up">
           <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl glass-soft shadow-romantic border border-primary/20 mb-6">
             <PenLine className="w-10 h-10 text-primary" />
-            <Sparkles className="absolute -top-2 -right-2 w-5 h-5 text-sky/60 animate-twinkle" />
+            <Sparkles className="absolute -top-2 -right-2 w-5 h-5 text-accent/60 animate-twinkle" />
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4 tracking-wide">
-            Poemas
+            Escritas
           </h2>
           <p className="text-muted-foreground font-body font-light max-w-lg mx-auto leading-relaxed">
             Palavras escritas do coração, versos que expressam o que palavras simples não conseguem
@@ -73,11 +73,11 @@ const PoemasSection = () => {
           <div className="divider-elegant w-32 mx-auto mt-8" />
         </div>
 
-        {/* Poems List */}
+        {/* Writings List */}
         <div className="space-y-10">
-          {poemas.map((poema, index) => (
+          {escritas.map((escrita, index) => (
             <article
-              key={poema.id}
+              key={escrita.id}
               className="glass-strong rounded-3xl p-8 md:p-12 animate-fade-in-up hover:shadow-romantic transition-all duration-500 border border-primary/10"
               style={{ animationDelay: `${index * 0.15 + 0.2}s` }}
             >
@@ -86,18 +86,18 @@ const PoemasSection = () => {
 
               {/* Title */}
               <h3 className="font-display text-3xl md:text-4xl text-foreground mb-8 tracking-wide">
-                {poema.title}
+                {escrita.title}
               </h3>
 
               {/* Content */}
               <div className="font-display text-foreground/80 leading-loose whitespace-pre-line text-xl md:text-2xl italic">
-                {poema.content}
+                {escrita.content}
               </div>
 
               {/* Author */}
-              {poema.author && (
+              {escrita.author && (
                 <p className="mt-10 text-right font-body text-primary font-light text-sm tracking-wider">
-                  — {poema.author}
+                  — {escrita.author}
                 </p>
               )}
 
@@ -114,11 +114,11 @@ const PoemasSection = () => {
         </div>
 
         {/* Empty State */}
-        {poemas.length === 0 && (
+        {escritas.length === 0 && (
           <div className="text-center py-20 glass rounded-3xl">
             <PenLine className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
             <p className="text-muted-foreground font-body">
-              Nenhum poema adicionado ainda
+              Nenhuma escrita adicionada ainda
             </p>
           </div>
         )}
@@ -127,7 +127,7 @@ const PoemasSection = () => {
         <div className="text-center mt-20 animate-fade-in" style={{ animationDelay: "0.6s" }}>
           <p className="text-muted-foreground/50 text-sm font-body font-light flex items-center justify-center gap-2">
             <span className="w-8 h-px bg-primary/30" />
-            Cada palavra é um pedaço do meu coração
+            Cada palavra é um pedacinho do meu coração
             <span className="w-8 h-px bg-primary/30" />
           </p>
         </div>
@@ -136,4 +136,4 @@ const PoemasSection = () => {
   );
 };
 
-export default PoemasSection;
+export default EscritasSection;
