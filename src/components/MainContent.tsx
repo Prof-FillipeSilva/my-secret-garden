@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import WelcomeSection from "./WelcomeSection";
 import EscritasSection from "./sections/EscritasSection";
 import FotosSection from "./sections/FotosSection";
@@ -18,16 +18,24 @@ const MainContent = ({ activeSection, onSectionChange }: MainContentProps) => {
   const [despedidaUnlocked, setDespedidaUnlocked] = useState(() => {
     return localStorage.getItem("despedida_unlock_time") !== null;
   });
+  const isScrollingRef = useRef(false);
 
   const handleLastAudioPlayed = () => {
     setDespedidaUnlocked(true);
   };
 
+  // Debounced section change to prevent rapid updates
+  const debouncedSectionChange = useCallback((section: string) => {
+    if (!isScrollingRef.current) {
+      onSectionChange(section);
+    }
+  }, [onSectionChange]);
+
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-40% 0px -40% 0px",
-      threshold: 0,
+      rootMargin: "-30% 0px -30% 0px",
+      threshold: 0.1,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -35,32 +43,24 @@ const MainContent = ({ activeSection, onSectionChange }: MainContentProps) => {
         if (entry.isIntersecting) {
           const sectionId = entry.target.getAttribute("data-section");
           if (sectionId) {
-            onSectionChange(sectionId);
+            debouncedSectionChange(sectionId);
           }
         }
       });
     }, observerOptions);
 
-    Object.values(sectionRefs.current).forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
-  }, [onSectionChange]);
-
-  useEffect(() => {
-    const targetRef = sectionRefs.current[activeSection];
-    if (targetRef) {
-      const navHeight = 80;
-      const elementPosition = targetRef.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
+    // Small delay to ensure refs are set
+    const timer = setTimeout(() => {
+      Object.values(sectionRefs.current).forEach((ref) => {
+        if (ref) observer.observe(ref);
       });
-    }
-  }, [activeSection]);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [debouncedSectionChange]);
 
   const sections = [
     { id: "inicio", component: <WelcomeSection /> },
@@ -73,16 +73,16 @@ const MainContent = ({ activeSection, onSectionChange }: MainContentProps) => {
   ];
 
   return (
-    <main className="relative">
+    <main className="relative w-full overflow-x-hidden">
       <ParticlesBackground />
-      <div className="relative z-10">
+      <div className="relative z-10 w-full">
         {sections.map(({ id, component }) => (
           <section
             key={id}
             id={id}
             data-section={id}
             ref={(el) => (sectionRefs.current[id] = el)}
-            className="scroll-mt-20"
+            className="scroll-mt-20 w-full"
           >
             {component}
           </section>
