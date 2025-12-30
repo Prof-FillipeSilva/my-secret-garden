@@ -9,12 +9,32 @@ interface Foto {
 
 // Fotos configuráveis - adicione suas fotos aqui
 const fotos: Foto[] = [
-  { id: "1", src: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800", alt: "Momento especial 1" },
-  { id: "2", src: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=800", alt: "Momento especial 2" },
-  { id: "3", src: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800", alt: "Momento especial 3" },
-  { id: "4", src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800", alt: "Momento especial 4" },
-  { id: "5", src: "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=800", alt: "Momento especial 5" },
-  { id: "6", src: "https://images.unsplash.com/photo-1501901609772-df0848060b33?w=800", alt: "Momento especial 6" },
+  { id: "1", src: "/assets/bg-1.jpeg", alt: "Momento especial 1" },
+  { id: "2", src: "/assets/bg-2.jpeg", alt: "Momento especial 1" },
+  { id: "3", src: "/assets/bg-3.jpeg", alt: "Momento especial 1" },
+  { id: "4", src: "/assets/bg-4.jpeg", alt: "Momento especial 1" },
+  { id: "5", src: "/assets/bg-5.jpeg", alt: "Momento especial 1" },
+  { id: "6", src: "/assets/bg-6.jpeg", alt: "Momento especial 1" },
+  { id: "7", src: "/assets/bg-7.jpeg", alt: "Momento especial 1" },
+  { id: "8", src: "/assets/bg-8.jpeg", alt: "Momento especial 1" },
+  { id: "9", src: "/assets/bg-9.jpeg", alt: "Momento especial 1" },
+  { id: "10", src: "/assets/bg-10.jpeg", alt: "Momento especial 1" },
+  { id: "11", src: "/assets/bg-11.jpeg", alt: "Momento especial 1" },
+  { id: "12", src: "/assets/bg-12.jpeg", alt: "Momento especial 1" },
+  { id: "13", src: "/assets/bg-13.jpeg", alt: "Momento especial 1" },
+  { id: "14", src: "/assets/bg-14.jpeg", alt: "Momento especial 1" },
+  { id: "15", src: "/assets/bg-15.jpeg", alt: "Momento especial 1" },
+  { id: "16", src: "/assets/bg-16.jpeg", alt: "Momento especial 1" },
+  { id: "17", src: "/assets/bg-17.jpeg", alt: "Momento especial 1" },
+  { id: "18", src: "/assets/bg-18.jpeg", alt: "Momento especial 1" },
+  { id: "19", src: "/assets/bg-19.jpeg", alt: "Momento especial 1" },
+  { id: "20", src: "/assets/bg-20.jpeg", alt: "Momento especial 1" },
+  { id: "21", src: "/assets/bg-21.jpeg", alt: "Momento especial 1" },
+  { id: "22", src: "/assets/bg-22.jpeg", alt: "Momento especial 1" },
+  { id: "23", src: "/assets/bg-23.jpeg", alt: "Momento especial 1" },
+  { id: "24", src: "/assets/bg-24.jpeg", alt: "Momento especial 1" },
+  { id: "25", src: "/assets/bg-25.jpeg", alt: "Momento especial 1" },
+  { id: "26", src: "/assets/bg-26.jpeg", alt: "Momento especial 1" },
 ];
 
 const FotosSection = () => {
@@ -78,7 +98,7 @@ const FotosSection = () => {
               <img
                 src={foto.src}
                 alt={foto.alt}
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover object-top"
                 loading="lazy"
               />
               {/* Overlay */}
