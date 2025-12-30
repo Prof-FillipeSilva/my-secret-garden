@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { PenLine, Image, Music, Gift, Sparkles, Menu, X, Heart, Home } from "lucide-react";
+import { PenLine, Image, Music, Gift, Sparkles, Menu, X, Heart, Home, HeartHandshake } from "lucide-react";
 
 interface NavigationProps {
   activeSection: string;
@@ -13,6 +13,7 @@ const navItems = [
   { id: "musicas", label: "Músicas", icon: Music },
   { id: "surpresa", label: "Surpresa", icon: Sparkles },
   { id: "presentes", label: "Presentes", icon: Gift },
+  { id: "despedida", label: "Despedida", icon: HeartHandshake },
 ];
 
 const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
@@ -56,7 +57,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.id;
-                const isLocked = item.id === "surpresa" || item.id === "presentes";
+                const isLocked = item.id === "surpresa" || item.id === "presentes" || item.id === "despedida";
 
                 return (
                   <button
@@ -104,7 +105,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
               {navItems.map((item, index) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.id;
-                const isLocked = item.id === "surpresa" || item.id === "presentes";
+                const isLocked = item.id === "surpresa" || item.id === "presentes" || item.id === "despedida";
 
                 return (
                   <button

@@ -96,7 +96,7 @@ const WelcomeSection = () => {
 
         {/* Title */}
         <h1 className="font-display text-5xl md:text-6xl text-foreground mb-6 animate-fade-in-up tracking-wide">
-          Bem-vinda, <span className="text-gradient-rose">Meu Amor</span>
+          Bem-vinda, <span className="text-gradient-royal">Meu Amor</span>
         </h1>
 
         {/* Subtitle */}
