@@ -10,10 +10,27 @@ interface Musica {
 
 // Músicas configuráveis - adicione suas músicas aqui
 const musicas: Musica[] = [
-  { id: "1", title: "Nossa Canção", artist: "Artista Especial", src: "" },
-  { id: "2", title: "Momentos Juntos", artist: "Banda Favorita", src: "" },
-  { id: "3", title: "Para Sempre", artist: "Cantor Romântico", src: "" },
-  { id: "4", title: "Amor Eterno", artist: "Duo Musical", src: "" },
+  { id: "1", title: "Equalize", artist: "Artista Especial", src: "" },
+  { id: "2", title: "Faz parte do meu show", artist: "Banda Favorita", src: "" },
+  { id: "3", title: "Vive", artist: "Cantor Romântico", src: "" },
+  { id: "4", title: "Palpite", artist: "Duo Musical", src: "" },
+  { id: "5", title: "Emily's Song", artist: "Duo Musical", src: "" },
+  { id: "6", title: "Se", artist: "Duo Musical", src: "" },
+  { id: "7", title: "Who Knows", artist: "Duo Musical", src: "" },
+  { id: "8", title: "Cida", artist: "Duo Musical", src: "" },
+  { id: "9", title: "Imaginando coisas", artist: "Duo Musical", src: "" },
+  { id: "10", title: "Focus", artist: "Duo Musical", src: "" },
+  { id: "11", title: "Oceano", artist: "Duo Musical", src: "" },
+  { id: "12", title: "Infinito particular", artist: "Duo Musical", src: "" },
+  { id: "13", title: "La Belle De Jour", artist: "Duo Musical", src: "" },
+  { id: "14", title: "Sozinho", artist: "Duo Musical", src: "" },
+  { id: "15", title: "Just Love", artist: "Duo Musical", src: "" },
+  { id: "16", title: "Pequena flor", artist: "Duo Musical", src: "" },
+  { id: "17", title: "Pra você dar o nome", artist: "Duo Musical", src: "" },
+  { id: "18", title: "Anjo", artist: "Duo Musical", src: "" },
+  { id: "19", title: "Capricorniana", artist: "Duo Musical", src: "" },
+  { id: "20", title: "Amor Eterno", artist: "Duo Musical", src: "" },
+
 ];
 
 const MusicasSection = () => {
