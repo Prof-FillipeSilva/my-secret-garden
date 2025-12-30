@@ -98,15 +98,15 @@ const WelcomeSection = () => {
 
         {/* Title */}
         <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 md:mb-6 animate-fade-in-up tracking-wide px-2">
-          Bem-vinda, <span className="text-gradient-royal">Meu Amor</span>
+          Bem-vinda, <span className="text-gradient-royal">Meu Benzinho!</span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-muted-foreground font-body font-light text-base md:text-lg lg:text-xl mb-8 md:mb-12 animate-fade-in-up max-w-lg mx-auto leading-relaxed px-4" style={{ animationDelay: "0.2s" }}>
-          Este é um lugar especial, criado só para você.
+          Hoje, pela última vez, vou chamar você assim, aproveite com carinho, foi criado só para você.
           <br className="hidden sm:block" />
           <span className="sm:hidden"> </span>
-          Antes de explorar, ouça esta mensagem.
+          
         </p>
 
         {/* Audio Player Card */}
@@ -153,7 +153,7 @@ const WelcomeSection = () => {
           </p>
 
           {/* Áudio - Adicione o src do áudio aqui */}
-          <audio ref={audioRef} src="" preload="metadata" />
+          <audio ref={audioRef} src="/audio/1.mp3" preload="metadata" />
         </div>
 
         {/* Scroll indicator */}
