@@ -1,10 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import WelcomeSection from "./WelcomeSection";
 import EscritasSection from "./sections/EscritasSection";
 import FotosSection from "./sections/FotosSection";
 import MusicasSection from "./sections/MusicasSection";
 import SurpresaSection from "./sections/SurpresaSection";
 import PresentesSection from "./sections/PresentesSection";
+import DespedidaSection from "./sections/DespedidaSection";
 import ParticlesBackground from "./ParticlesBackground";
 
 interface MainContentProps {
@@ -12,17 +13,15 @@ interface MainContentProps {
   onSectionChange: (section: string) => void;
 }
 
-const sections = [
-  { id: "inicio", component: WelcomeSection },
-  { id: "escritas", component: EscritasSection },
-  { id: "fotos", component: FotosSection },
-  { id: "musicas", component: MusicasSection },
-  { id: "surpresa", component: SurpresaSection },
-  { id: "presentes", component: PresentesSection },
-];
-
 const MainContent = ({ activeSection, onSectionChange }: MainContentProps) => {
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
+  const [despedidaUnlocked, setDespedidaUnlocked] = useState(() => {
+    return localStorage.getItem("despedida_unlock_time") !== null;
+  });
+
+  const handleLastAudioPlayed = () => {
+    setDespedidaUnlocked(true);
+  };
 
   useEffect(() => {
     const observerOptions = {
@@ -63,11 +62,21 @@ const MainContent = ({ activeSection, onSectionChange }: MainContentProps) => {
     }
   }, [activeSection]);
 
+  const sections = [
+    { id: "inicio", component: <WelcomeSection /> },
+    { id: "escritas", component: <EscritasSection /> },
+    { id: "fotos", component: <FotosSection /> },
+    { id: "musicas", component: <MusicasSection /> },
+    { id: "surpresa", component: <SurpresaSection /> },
+    { id: "presentes", component: <PresentesSection onLastAudioPlayed={handleLastAudioPlayed} /> },
+    { id: "despedida", component: <DespedidaSection isUnlocked={despedidaUnlocked} /> },
+  ];
+
   return (
     <main className="relative">
       <ParticlesBackground />
       <div className="relative z-10">
-        {sections.map(({ id, component: Component }) => (
+        {sections.map(({ id, component }) => (
           <section
             key={id}
             id={id}
@@ -75,7 +84,7 @@ const MainContent = ({ activeSection, onSectionChange }: MainContentProps) => {
             ref={(el) => (sectionRefs.current[id] = el)}
             className="scroll-mt-20"
           >
-            <Component />
+            {component}
           </section>
         ))}
       </div>

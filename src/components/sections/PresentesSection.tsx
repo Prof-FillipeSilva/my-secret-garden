@@ -1,17 +1,142 @@
-import { useState } from "react";
-import { Gift, Play, Pause, Heart, Sparkles, Video, Music } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Gift, Play, Pause, Heart, Sparkles, Music, Image as ImageIcon } from "lucide-react";
 import LockedSection from "@/components/LockedSection";
 
 // Data de liberação: 31/12/2025 às 10h00
 const RELEASE_DATE = new Date("2025-12-31T10:00:00");
 
-const PresentesContent = () => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+interface AudioItem {
+  id: string;
+  title: string;
+  src: string;
+  photoSrc: string;
+  photoAlt: string;
+}
+
+// Áudios configuráveis - adicione seus áudios e fotos aqui
+const audioItems: AudioItem[] = [
+  {
+    id: "1",
+    title: "Primeiro Presente",
+    src: "",
+    photoSrc: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800",
+    photoAlt: "Momento especial 1"
+  },
+  {
+    id: "2",
+    title: "Segundo Presente",
+    src: "",
+    photoSrc: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=800",
+    photoAlt: "Momento especial 2"
+  },
+  {
+    id: "3",
+    title: "Terceiro Presente",
+    src: "",
+    photoSrc: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800",
+    photoAlt: "Momento especial 3"
+  },
+  {
+    id: "4",
+    title: "Quarto Presente",
+    src: "",
+    photoSrc: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800",
+    photoAlt: "Momento especial 4"
+  },
+];
+
+interface PresentesContentProps {
+  onLastAudioPlayed: () => void;
+}
+
+const PresentesContent = ({ onLastAudioPlayed }: PresentesContentProps) => {
+  const [playingId, setPlayingId] = useState<string | null>(null);
+  const [progress, setProgress] = useState<{ [key: string]: number }>({});
+  const [introPlaying, setIntroPlaying] = useState(false);
+  const [introProgress, setIntroProgress] = useState(0);
+  const audioRefs = useRef<{ [key: string]: HTMLAudioElement | null }>({});
+  const introAudioRef = useRef<HTMLAudioElement>(null);
+
+  const toggleIntro = () => {
+    const audio = introAudioRef.current;
+    if (!audio) return;
+
+    // Pause all other audios
+    Object.values(audioRefs.current).forEach(audioEl => {
+      if (audioEl) audioEl.pause();
+    });
+    setPlayingId(null);
+
+    if (introPlaying) {
+      audio.pause();
+      setIntroPlaying(false);
+    } else {
+      audio.play();
+      setIntroPlaying(true);
+    }
+  };
+
+  const togglePlay = (id: string) => {
+    const audio = audioRefs.current[id];
+    if (!audio) return;
+
+    // Pause intro
+    if (introAudioRef.current) {
+      introAudioRef.current.pause();
+      setIntroPlaying(false);
+    }
+
+    // Pause all other audios
+    Object.entries(audioRefs.current).forEach(([audioId, audioEl]) => {
+      if (audioId !== id && audioEl) {
+        audioEl.pause();
+      }
+    });
+
+    if (playingId === id) {
+      audio.pause();
+      setPlayingId(null);
+    } else {
+      audio.play();
+      setPlayingId(id);
+    }
+  };
+
+  const handleTimeUpdate = (id: string) => {
+    const audio = audioRefs.current[id];
+    if (audio && audio.duration) {
+      setProgress(prev => ({
+        ...prev,
+        [id]: (audio.currentTime / audio.duration) * 100
+      }));
+    }
+  };
+
+  const handleEnded = (id: string) => {
+    setPlayingId(null);
+    setProgress(prev => ({ ...prev, [id]: 0 }));
+    
+    // Check if it's the last audio
+    if (id === audioItems[audioItems.length - 1].id) {
+      onLastAudioPlayed();
+    }
+  };
+
+  const handleIntroTimeUpdate = () => {
+    const audio = introAudioRef.current;
+    if (audio && audio.duration) {
+      setIntroProgress((audio.currentTime / audio.duration) * 100);
+    }
+  };
+
+  const handleIntroEnded = () => {
+    setIntroPlaying(false);
+    setIntroProgress(0);
+  };
 
   return (
     <section className="min-h-screen py-20 px-4 relative overflow-hidden">
-      {/* Celebration background */}
+      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(12)].map((_, i) => (
           <Sparkles
@@ -33,12 +158,12 @@ const PresentesContent = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-blur-in">
           <div className="relative inline-flex items-center justify-center w-24 h-24 mb-8">
-            <div className="absolute inset-0 rounded-3xl glass-soft shadow-romantic" />
+            <div className="absolute inset-0 rounded-3xl glass-soft shadow-royal" />
             <Gift className="w-12 h-12 text-primary relative z-10 animate-float" />
             <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-gold animate-pulse-soft" />
           </div>
           <h2 className="font-display text-4xl md:text-5xl text-foreground mb-4 tracking-wide">
-            <span className="text-gradient-rose">Seus Presentes Especiais!</span>
+            <span className="text-gradient-royal">Seus Presentes Especiais!</span>
           </h2>
           <p className="text-muted-foreground font-body font-light max-w-md mx-auto">
             Estes momentos foram preparados especialmente para você, com todo amor do mundo
@@ -46,55 +171,26 @@ const PresentesContent = () => {
           <div className="divider-elegant w-32 mx-auto mt-8" />
         </div>
 
-        {/* Video Section */}
-        <div className="glass-strong rounded-3xl p-8 md:p-10 mb-8 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-primary/10">
+        {/* Intro Audio */}
+        <div className="glass-strong rounded-3xl p-8 md:p-10 mb-10 animate-scale-in hover:shadow-royal transition-all duration-500 border border-primary/10">
           <h3 className="font-display text-2xl text-foreground mb-6 flex items-center gap-3">
-            <Video className="w-5 h-5 text-primary" />
-            Vídeo Especial
+            <Heart className="w-5 h-5 text-primary" />
+            Introdução
           </h3>
-          
-          {/* Video Player */}
-          <div className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/10">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button
-                onClick={() => setIsVideoPlaying(!isVideoPlaying)}
-                className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 ${
-                  isVideoPlaying 
-                    ? "bg-white/80 backdrop-blur-sm shadow-soft" 
-                    : "bg-gradient-to-br from-primary to-accent shadow-romantic"
-                }`}
-              >
-                {isVideoPlaying ? (
-                  <Pause className="w-8 h-8 text-foreground" />
-                ) : (
-                  <Play className="w-8 h-8 text-white ml-1" />
-                )}
-              </button>
-            </div>
-          </div>
-          
-          <p className="text-center text-muted-foreground/60 text-sm mt-6 font-body font-light">
-            Um vídeo especial, feito com muito amor 💕
+          <p className="text-muted-foreground font-body font-light mb-6">
+            Antes de abrir seus presentes, ouça esta mensagem especial...
           </p>
-        </div>
-
-        {/* Audio Section */}
-        <div className="glass-strong rounded-3xl p-8 md:p-10 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-primary/10" style={{ animationDelay: "0.2s" }}>
-          <h3 className="font-display text-2xl text-foreground mb-6 flex items-center gap-3">
-            <Music className="w-5 h-5 text-primary" />
-            Áudio Especial
-          </h3>
 
           <div className="flex items-center gap-5 p-5 glass-soft rounded-2xl border border-primary/10">
             <button
-              onClick={() => setIsAudioPlaying(!isAudioPlaying)}
+              onClick={toggleIntro}
               className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${
-                isAudioPlaying 
-                  ? "bg-gradient-to-br from-accent to-primary shadow-romantic" 
+                introPlaying
+                  ? "bg-gradient-to-br from-accent to-primary shadow-royal"
                   : "bg-gradient-to-br from-primary to-accent shadow-soft"
               } hover:scale-105`}
             >
-              {isAudioPlaying ? (
+              {introPlaying ? (
                 <Pause className="w-6 h-6 text-white" />
               ) : (
                 <Play className="w-6 h-6 text-white ml-0.5" />
@@ -103,31 +199,106 @@ const PresentesContent = () => {
 
             <div className="flex-1 min-w-0">
               <h4 className="font-display text-xl text-foreground mb-2">
-                Mensagem Especial
+                Mensagem de Boas-Vindas
               </h4>
               <div className="flex items-center gap-3">
                 <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden">
-                  <div 
-                    className={`h-full rounded-full transition-all duration-500 ${
-                      isAudioPlaying 
-                        ? "w-1/3 bg-gradient-to-r from-primary to-accent animate-pulse" 
-                        : "w-0 bg-primary"
-                    }`}
+                  <div
+                    className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300"
+                    style={{ width: `${introProgress}%` }}
                   />
                 </div>
                 <span className="text-sm text-muted-foreground font-body">
-                  {isAudioPlaying ? "Tocando..." : "0:00"}
+                  {introPlaying ? "Tocando..." : "0:00"}
                 </span>
               </div>
             </div>
           </div>
+
+          <audio
+            ref={introAudioRef}
+            src=""
+            onTimeUpdate={handleIntroTimeUpdate}
+            onEnded={handleIntroEnded}
+            preload="metadata"
+          />
         </div>
 
-        {/* Celebration Message */}
-        <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-          <div className="inline-flex items-center gap-3 glass-strong px-8 py-4 rounded-full shadow-romantic border border-primary/20">
+        {/* Audio Items with Photos */}
+        <div className="space-y-8">
+          {audioItems.map((item, index) => (
+            <div
+              key={item.id}
+              className="glass-strong rounded-3xl p-8 md:p-10 animate-fade-in-up hover:shadow-royal transition-all duration-500 border border-primary/10"
+              style={{ animationDelay: `${(index + 1) * 0.15}s` }}
+            >
+              {/* Title */}
+              <h3 className="font-display text-2xl text-foreground mb-6 flex items-center gap-3">
+                <Music className="w-5 h-5 text-primary" />
+                {item.title}
+              </h3>
+
+              {/* Audio Player */}
+              <div className="flex items-center gap-5 p-5 glass-soft rounded-2xl border border-primary/10 mb-6">
+                <button
+                  onClick={() => togglePlay(item.id)}
+                  className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${
+                    playingId === item.id
+                      ? "bg-gradient-to-br from-accent to-primary shadow-royal"
+                      : "bg-gradient-to-br from-primary to-accent shadow-soft"
+                  } hover:scale-105`}
+                >
+                  {playingId === item.id ? (
+                    <Pause className="w-6 h-6 text-white" />
+                  ) : (
+                    <Play className="w-6 h-6 text-white ml-0.5" />
+                  )}
+                </button>
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300"
+                        style={{ width: `${progress[item.id] || 0}%` }}
+                      />
+                    </div>
+                    <span className="text-sm text-muted-foreground font-body min-w-[60px]">
+                      {playingId === item.id ? "Tocando..." : "0:00"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <audio
+                ref={el => audioRefs.current[item.id] = el}
+                src={item.src}
+                onTimeUpdate={() => handleTimeUpdate(item.id)}
+                onEnded={() => handleEnded(item.id)}
+                preload="metadata"
+              />
+
+              {/* Photo */}
+              <div className="relative rounded-2xl overflow-hidden border border-primary/10">
+                <div className="flex items-center gap-2 absolute top-4 left-4 z-10 glass-strong px-4 py-2 rounded-full">
+                  <ImageIcon className="w-4 h-4 text-primary" />
+                  <span className="font-body text-sm text-foreground">Momento Especial</span>
+                </div>
+                <img
+                  src={item.photoSrc}
+                  alt={item.photoAlt}
+                  className="w-full aspect-video object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer Message */}
+        <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
+          <div className="inline-flex items-center gap-3 glass-strong px-8 py-4 rounded-full shadow-royal border border-primary/20">
             <Sparkles className="w-5 h-5 text-primary" />
-            <span className="font-display text-xl text-gradient-rose">Com todo meu amor!</span>
+            <span className="font-display text-xl text-gradient-royal">Com todo meu amor!</span>
             <Sparkles className="w-5 h-5 text-primary" />
           </div>
           <p className="text-muted-foreground font-body text-sm mt-6 font-light">
@@ -139,7 +310,11 @@ const PresentesContent = () => {
   );
 };
 
-const PresentesSection = () => {
+interface PresentesSectionProps {
+  onLastAudioPlayed: () => void;
+}
+
+const PresentesSection = ({ onLastAudioPlayed }: PresentesSectionProps) => {
   return (
     <LockedSection
       releaseDate={RELEASE_DATE}
@@ -147,7 +322,7 @@ const PresentesSection = () => {
       title="🎁 Presentes"
       waitingMessage="Estes presentes foram preparados com carinho, pensados em cada detalhe, e serão revelados no momento perfeito."
     >
-      <PresentesContent />
+      <PresentesContent onLastAudioPlayed={onLastAudioPlayed} />
     </LockedSection>
   );
 };

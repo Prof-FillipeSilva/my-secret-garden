@@ -1,12 +1,25 @@
-import { useState } from "react";
-import { Sparkles, Play, Pause, Heart, Star } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Sparkles, Play, Pause, Heart, Star, Video, Quote } from "lucide-react";
 import LockedSection from "@/components/LockedSection";
 
 // Data de liberação: 31/12/2025 às 00h00
 const RELEASE_DATE = new Date("2025-12-31T00:00:00");
 
 const SurpresaContent = () => {
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleVideo = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isVideoPlaying) {
+      video.pause();
+    } else {
+      video.play();
+    }
+    setIsVideoPlaying(!isVideoPlaying);
+  };
 
   return (
     <section className="min-h-screen py-20 px-4 relative overflow-hidden">
@@ -32,13 +45,13 @@ const SurpresaContent = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-blur-in">
           <div className="relative inline-flex items-center justify-center w-28 h-28 mb-8">
-            <div className="absolute inset-0 rounded-3xl glass-soft shadow-romantic animate-glow" />
+            <div className="absolute inset-0 rounded-3xl glass-soft shadow-royal animate-glow" />
             <Sparkles className="w-14 h-14 text-primary relative z-10 animate-float" />
             <Heart className="absolute -top-3 -right-3 w-8 h-8 text-primary animate-pulse-soft" />
             <Star className="absolute -bottom-2 -left-2 w-6 h-6 text-gold animate-twinkle" />
           </div>
           <h2 className="font-display text-4xl md:text-6xl text-foreground mb-6 tracking-wide">
-            <span className="text-gradient-rose">Feliz Ano Novo!</span>
+            <span className="text-gradient-royal">Feliz Ano Novo!</span>
           </h2>
           <p className="text-muted-foreground font-body font-light max-w-lg mx-auto text-lg leading-relaxed">
             Meu amor, este é o início de um novo ciclo, e eu quero vivê-lo ao seu lado.
@@ -46,87 +59,82 @@ const SurpresaContent = () => {
           <div className="divider-elegant w-40 mx-auto mt-8" />
         </div>
 
-        {/* Main Message Card */}
-        <div className="glass-strong rounded-3xl p-10 md:p-14 mb-10 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-primary/10">
-          <div className="text-center">
-            <Sparkles className="w-8 h-8 text-gold mx-auto mb-6 animate-pulse-soft" />
+        {/* Video Section */}
+        <div className="glass-strong rounded-3xl p-8 md:p-10 mb-10 animate-scale-in hover:shadow-royal transition-all duration-500 border border-primary/10">
+          <h3 className="font-display text-2xl text-foreground mb-6 flex items-center gap-3">
+            <Video className="w-5 h-5 text-primary" />
+            Vídeo de Aniversário
+          </h3>
+          
+          {/* Video Player */}
+          <div className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/10">
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              onPlay={() => setIsVideoPlaying(true)}
+              onPause={() => setIsVideoPlaying(false)}
+              onEnded={() => setIsVideoPlaying(false)}
+            >
+              {/* Adicione o src do vídeo aqui */}
+              <source src="" type="video/mp4" />
+              Seu navegador não suporta vídeos.
+            </video>
             
-            <h3 className="font-display text-2xl md:text-3xl text-foreground mb-8 tracking-wide">
-              Uma Mensagem do Coração
-            </h3>
-            
-            <div className="font-display text-foreground/80 leading-loose text-xl md:text-2xl italic max-w-2xl mx-auto mb-10">
-              <p className="mb-6">
-                Que este novo ano traga ainda mais amor, alegria e momentos inesquecíveis para nós.
-              </p>
-              <p className="mb-6">
-                Você é a pessoa mais especial da minha vida, e não existe ninguém com quem eu prefira começar este novo capítulo.
-              </p>
-              <p>
-                Que possamos crescer juntos, sonhar juntos, e construir uma história cada vez mais bonita.
-              </p>
-            </div>
-
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/40" />
-              <Heart className="w-5 h-5 text-primary animate-pulse-soft" />
-              <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/40" />
-            </div>
-
-            <p className="font-body text-primary font-light text-sm tracking-wider">
-              — Com todo meu amor, sempre
-            </p>
+            {!isVideoPlaying && (
+              <div className="absolute inset-0 flex items-center justify-center bg-royal/20">
+                <button
+                  onClick={toggleVideo}
+                  className="w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 bg-gradient-to-br from-primary to-accent shadow-royal"
+                >
+                  <Play className="w-8 h-8 text-white ml-1" />
+                </button>
+              </div>
+            )}
           </div>
+          
+          <p className="text-center text-muted-foreground/60 text-sm mt-6 font-body font-light">
+            Um vídeo especial, feito com muito amor 💕
+          </p>
         </div>
 
-        {/* Audio Message */}
-        <div className="glass-strong rounded-3xl p-8 md:p-10 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-primary/10" style={{ animationDelay: "0.2s" }}>
-          <h3 className="font-display text-2xl text-foreground mb-6 flex items-center gap-3">
-            <Heart className="w-5 h-5 text-primary" />
-            Mensagem de Ano Novo
+        {/* Poem Section */}
+        <div className="glass-strong rounded-3xl p-10 md:p-14 mb-10 animate-scale-in hover:shadow-royal transition-all duration-500 border border-primary/10" style={{ animationDelay: "0.2s" }}>
+          <Quote className="w-10 h-10 text-primary/30 mb-6" />
+          
+          <h3 className="font-display text-2xl md:text-3xl text-foreground mb-8 tracking-wide">
+            Um Poema Para Você
           </h3>
-
-          <div className="flex items-center gap-5 p-5 glass-soft rounded-2xl border border-primary/10">
-            <button
-              onClick={() => setIsAudioPlaying(!isAudioPlaying)}
-              className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 ${
-                isAudioPlaying 
-                  ? "bg-gradient-to-br from-accent to-primary shadow-romantic" 
-                  : "bg-gradient-to-br from-primary to-accent shadow-soft"
-              } hover:scale-105`}
-            >
-              {isAudioPlaying ? (
-                <Pause className="w-6 h-6 text-white" />
-              ) : (
-                <Play className="w-6 h-6 text-white ml-0.5" />
-              )}
-            </button>
-
-            <div className="flex-1 min-w-0">
-              <h4 className="font-display text-xl text-foreground mb-2">
-                Áudio Especial de Ano Novo
-              </h4>
-              <div className="flex items-center gap-3">
-                <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden">
-                  <div 
-                    className={`h-full rounded-full transition-all duration-500 ${
-                      isAudioPlaying 
-                        ? "w-1/3 bg-gradient-to-r from-primary to-accent animate-pulse" 
-                        : "w-0 bg-primary"
-                    }`}
-                  />
-                </div>
-                <span className="text-sm text-muted-foreground font-body">
-                  {isAudioPlaying ? "Tocando..." : "0:00"}
-                </span>
-              </div>
-            </div>
+          
+          <div className="font-display text-foreground/80 leading-loose text-xl md:text-2xl italic max-w-2xl mx-auto mb-10">
+            <p className="mb-6">
+              Que este novo ano traga ainda mais amor,<br />
+              alegria e momentos inesquecíveis para nós.
+            </p>
+            <p className="mb-6">
+              Você é a pessoa mais especial da minha vida,<br />
+              e não existe ninguém com quem eu prefira<br />
+              começar este novo capítulo.
+            </p>
+            <p>
+              Que possamos crescer juntos, sonhar juntos,<br />
+              e construir uma história cada vez mais bonita.
+            </p>
           </div>
+
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/40" />
+            <Heart className="w-5 h-5 text-primary animate-pulse-soft" />
+            <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/40" />
+          </div>
+
+          <p className="font-body text-primary font-light text-sm tracking-wider text-center">
+            — Com todo meu amor, sempre
+          </p>
         </div>
 
         {/* Celebration Footer */}
         <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-          <div className="inline-flex items-center gap-3 glass-strong px-10 py-5 rounded-full shadow-romantic border border-gold/30">
+          <div className="inline-flex items-center gap-3 glass-strong px-10 py-5 rounded-full shadow-royal border border-gold/30">
             <Star className="w-6 h-6 text-gold animate-twinkle" />
             <span className="font-display text-2xl text-gradient-gold">2026</span>
             <Star className="w-6 h-6 text-gold animate-twinkle" style={{ animationDelay: "0.5s" }} />
