@@ -30,10 +30,12 @@ const ParticlesBackground = () => {
 
     const particles: Particle[] = [];
     const particleCount = 50;
+    
+    // Rose/pink themed colors
     const colors = [
       "rgba(212, 175, 55, 0.4)", // Gold
-      "rgba(195, 142, 180, 0.3)", // Rose
-      "rgba(100, 130, 180, 0.2)", // Blue
+      "rgba(200, 120, 160, 0.3)", // Rose
+      "rgba(180, 100, 140, 0.25)", // Mauve
       "rgba(255, 255, 255, 0.15)", // White
     ];
 

@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
-import AudiosSection from "./sections/AudiosSection";
-import PoemasSection from "./sections/PoemasSection";
+import WelcomeSection from "./WelcomeSection";
+import EscritasSection from "./sections/EscritasSection";
 import FotosSection from "./sections/FotosSection";
 import MusicasSection from "./sections/MusicasSection";
 import SurpresaSection from "./sections/SurpresaSection";
+import PresentesSection from "./sections/PresentesSection";
 import ParticlesBackground from "./ParticlesBackground";
 
 interface MainContentProps {
@@ -12,11 +13,12 @@ interface MainContentProps {
 }
 
 const sections = [
-  { id: "poemas", component: PoemasSection },
+  { id: "inicio", component: WelcomeSection },
+  { id: "escritas", component: EscritasSection },
   { id: "fotos", component: FotosSection },
   { id: "musicas", component: MusicasSection },
-  { id: "audios", component: AudiosSection },
   { id: "surpresa", component: SurpresaSection },
+  { id: "presentes", component: PresentesSection },
 ];
 
 const MainContent = ({ activeSection, onSectionChange }: MainContentProps) => {
