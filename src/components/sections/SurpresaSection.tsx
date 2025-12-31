@@ -159,8 +159,8 @@ const SurpresaSection = () => {
     <LockedSection
       releaseDate={RELEASE_DATE}
       icon={<Sparkles className="w-12 h-12 text-primary" />}
-      title="✨ Surpresa"
-      waitingMessage="Uma surpresa especial está preparada para a virada do ano. Quando o relógio marcar meia-noite, este momento será só nosso."
+      title="Surpresa"
+      waitingMessage="Acalma o coração, falta bem pouco"
     >
       <SurpresaContent />
     </LockedSection>
