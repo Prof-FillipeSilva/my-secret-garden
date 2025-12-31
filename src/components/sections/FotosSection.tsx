@@ -9,32 +9,32 @@ interface Foto {
 
 // Fotos configuráveis - adicione suas fotos aqui
 const fotos: Foto[] = [
-  { id: "1", src: "/assets/bg-1.jpeg", alt: "Momento especial 1" },
-  { id: "2", src: "/assets/bg-2.jpeg", alt: "Momento especial 1" },
-  { id: "3", src: "/assets/bg-3.jpeg", alt: "Momento especial 1" },
-  { id: "4", src: "/assets/bg-4.jpeg", alt: "Momento especial 1" },
-  { id: "5", src: "/assets/bg-5.jpeg", alt: "Momento especial 1" },
-  { id: "6", src: "/assets/bg-6.jpeg", alt: "Momento especial 1" },
-  { id: "7", src: "/assets/bg-7.jpeg", alt: "Momento especial 1" },
-  { id: "8", src: "/assets/bg-8.jpeg", alt: "Momento especial 1" },
-  { id: "9", src: "/assets/bg-9.jpeg", alt: "Momento especial 1" },
-  { id: "10", src: "/assets/bg-10.jpeg", alt: "Momento especial 1" },
-  { id: "11", src: "/assets/bg-11.jpeg", alt: "Momento especial 1" },
-  { id: "12", src: "/assets/bg-12.jpeg", alt: "Momento especial 1" },
-  { id: "13", src: "/assets/bg-13.jpeg", alt: "Momento especial 1" },
-  { id: "14", src: "/assets/bg-14.jpeg", alt: "Momento especial 1" },
-  { id: "15", src: "/assets/bg-15.jpeg", alt: "Momento especial 1" },
-  { id: "16", src: "/assets/bg-16.jpeg", alt: "Momento especial 1" },
-  { id: "17", src: "/assets/bg-17.jpeg", alt: "Momento especial 1" },
-  { id: "18", src: "/assets/bg-18.jpeg", alt: "Momento especial 1" },
-  { id: "19", src: "/assets/bg-19.jpeg", alt: "Momento especial 1" },
-  { id: "20", src: "/assets/bg-20.jpeg", alt: "Momento especial 1" },
-  { id: "21", src: "/assets/bg-21.jpeg", alt: "Momento especial 1" },
-  { id: "22", src: "/assets/bg-22.jpeg", alt: "Momento especial 1" },
-  { id: "23", src: "/assets/bg-23.jpeg", alt: "Momento especial 1" },
-  { id: "24", src: "/assets/bg-24.jpeg", alt: "Momento especial 1" },
-  { id: "25", src: "/assets/bg-25.jpeg", alt: "Momento especial 1" },
-  { id: "26", src: "/assets/bg-26.jpeg", alt: "Momento especial 1" },
+  { id: "1", src: "/assets/bg-1.jpeg", alt: "..." },
+  { id: "2", src: "/assets/bg-2.jpeg", alt: "..." },
+  { id: "3", src: "/assets/bg-3.jpeg", alt: "..." },
+  { id: "4", src: "/assets/bg-4.jpeg", alt: "..." },
+  { id: "5", src: "/assets/bg-5.jpeg", alt: "..." },
+  { id: "6", src: "/assets/bg-6.jpeg", alt: "..." },
+  { id: "7", src: "/assets/bg-7.jpeg", alt: "..." },
+  { id: "8", src: "/assets/bg-8.jpeg", alt: "..." },
+  { id: "9", src: "/assets/bg-9.jpeg", alt: "..." },
+  { id: "10", src: "/assets/bg-10.jpeg", alt: "..." },
+  { id: "11", src: "/assets/bg-11.jpeg", alt: "..." },
+  { id: "12", src: "/assets/bg-12.jpeg", alt: "..." },
+  { id: "13", src: "/assets/bg-13.jpeg", alt: "..." },
+  { id: "14", src: "/assets/bg-14.jpeg", alt: "..." },
+  { id: "15", src: "/assets/bg-15.jpeg", alt: "..." },
+  { id: "16", src: "/assets/bg-16.jpeg", alt: "..." },
+  { id: "17", src: "/assets/bg-17.jpeg", alt: "..." },
+  { id: "18", src: "/assets/bg-18.jpeg", alt: "..." },
+  { id: "19", src: "/assets/bg-19.jpeg", alt: "..." },
+  { id: "20", src: "/assets/bg-20.jpeg", alt: "..." },
+  { id: "21", src: "/assets/bg-21.jpeg", alt: "..." },
+  { id: "22", src: "/assets/bg-22.jpeg", alt: "..." },
+  { id: "23", src: "/assets/bg-23.jpeg", alt: "..." },
+  { id: "24", src: "/assets/bg-24.jpeg", alt: "..." },
+  { id: "25", src: "/assets/bg-25.jpeg", alt: "..." },
+  { id: "26", src: "/assets/bg-26.jpeg", alt: "..." },
 ];
 
 const FotosSection = () => {
@@ -81,7 +81,7 @@ const FotosSection = () => {
             Galeria de Fotos
           </h2>
           <p className="text-muted-foreground font-body font-light max-w-lg mx-auto leading-relaxed text-sm md:text-base px-4">
-            Momentos eternizados, memórias que guardaremos para sempre
+            Eu lembro de cada dia, cada momento, e como foram bons esses tempos, eu me lembrarei de você em cada dia restante da minha vida
           </p>
           <div className="divider-elegant w-24 md:w-32 mx-auto mt-6 md:mt-8" />
         </div>
