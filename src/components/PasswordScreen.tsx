@@ -5,7 +5,7 @@ interface PasswordScreenProps {
   onSuccess: () => void;
 }
 
-const CORRECT_PASSWORD = "amor2025"; // Senha configurável
+const CORRECT_PASSWORD = "caichinhos123"; // Senha configurável
 
 const PasswordScreen = ({ onSuccess }: PasswordScreenProps) => {
   const [password, setPassword] = useState("");
