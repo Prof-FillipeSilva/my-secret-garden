@@ -343,7 +343,7 @@ const DespedidaSection = ({ isUnlocked }: DespedidaSectionProps) => {
     if (isUnlocked) {
       // Set unlock time to 1 hour from now when unlocked
       if (!savedUnlockTime) {
-        const newUnlockTime = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+        const newUnlockTime = new Date(Date.now() + 60 * 15 * 1000); // 1 hour
         localStorage.setItem("despedida_unlock_time", newUnlockTime.toISOString());
         setUnlockTime(newUnlockTime);
       } else {
