@@ -1,5 +1,14 @@
-import { useState } from "react";
-import { Music, Play, Pause, SkipBack, SkipForward, Volume2, Heart, Disc } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import {
+  Music,
+  Play,
+  Pause,
+  SkipBack,
+  SkipForward,
+  Volume2,
+  Heart,
+  Disc,
+} from "lucide-react";
 
 interface Musica {
   id: string;
@@ -8,211 +17,205 @@ interface Musica {
   src: string;
 }
 
-// Músicas configuráveis - adicione suas músicas aqui
 const musicas: Musica[] = [
-  { id: "1", title: "Equalize", artist: "Artista Especial", src: "" },
-  { id: "2", title: "Faz parte do meu show", artist: "Banda Favorita", src: "" },
-  { id: "3", title: "Vive", artist: "Cantor Romântico", src: "" },
-  { id: "4", title: "Palpite", artist: "Duo Musical", src: "" },
-  { id: "5", title: "Emily's Song", artist: "Duo Musical", src: "" },
-  { id: "6", title: "Se", artist: "Duo Musical", src: "" },
-  { id: "7", title: "Who Knows", artist: "Duo Musical", src: "" },
-  { id: "8", title: "Cida", artist: "Duo Musical", src: "" },
-  { id: "9", title: "Imaginando coisas", artist: "Duo Musical", src: "" },
-  { id: "10", title: "Focus", artist: "Duo Musical", src: "" },
-  { id: "11", title: "Oceano", artist: "Duo Musical", src: "" },
-  { id: "12", title: "Infinito particular", artist: "Duo Musical", src: "" },
-  { id: "13", title: "La Belle De Jour", artist: "Duo Musical", src: "" },
-  { id: "14", title: "Sozinho", artist: "Duo Musical", src: "" },
-  { id: "15", title: "Just Love", artist: "Duo Musical", src: "" },
-  { id: "16", title: "Pequena flor", artist: "Duo Musical", src: "" },
-  { id: "17", title: "Pra você dar o nome", artist: "Duo Musical", src: "" },
-  { id: "18", title: "Anjo", artist: "Duo Musical", src: "" },
-  { id: "19", title: "Capricorniana", artist: "Duo Musical", src: "" },
-  { id: "20", title: "Amor Eterno", artist: "Duo Musical", src: "" },
-
+  { id: "1", title: "Equalize", artist: "Pitty", src: "/music/equalize.mp3" },
+  { id: "2", title: "Faz parte do meu show", artist: "Cazuza", src: "/music/fazparte.mp3" },
+  { id: "3", title: "Pétala", artist: "Djavan", src: "/music/petala.mp3" },
+  { id: "4", title: "Vive", artist: "Djavan", src: "/music/vive.mp3" },
+  { id: "5", title: "Escorpião", artist: "Xamã e Agnes", src: "/music/escorpiao.mp3" },
+  { id: "6", title: "Palpite", artist: "Vanessa Rangel", src: "/music/palpite.mp3" },
+  { id: "7", title: "Emily's Song", artist: "Daniel Caesar", src: "/music/emilly.mp3" },
+  { id: "8", title: "Se", artist: "Djavan", src: "/music/se.mp3" },
+  { id: "9", title: "Who Knows", artist: "Daniel Caesar", src: "/music/whoknows.mp3" },
+  { id: "10", title: "Cida", artist: "Xamã e Agnes", src: "/music/cida.mp3" },
+  { id: "11", title: "Imaginando coisas", artist: "G.A, Dael, Cold & Izzat", src: "/music/imaginandocoisas.mp3" },
+  { id: "12", title: "Focus", artist: "H.E.R", src: "/music/focus.mp3" },
+  { id: "13", title: "Oceano", artist: "Djavan", src: "/music/oceano.mp3" },
+  { id: "14", title: "Infinito particular", artist: "Marisa Monte", src: "/music/infinito.mp3" },
+  { id: "15", title: "La Belle De Jour", artist: "Alceu Valença", src: "/music/labelle.mp3" },
+  { id: "16", title: "Sozinho", artist: "Caetano", src: "/music/sozinho.mp3" },
+  { id: "17", title: "Just Love", artist: "Xamã e Agnes", src: "/music/justlove.mp3" },
+  { id: "18", title: "Pequena flor", artist: "Gabriel Elias", src: "/music/pequenaflor.mp3" },
+  { id: "19", title: "Pra você dar o nome", artist: "5 a seco", src: "/music/daronome.mp3" },
+  { id: "20", title: "Anjo", artist: "Saulo", src: "/music/anjosaulo.mp3" },
+  { id: "21", title: "Capricorniana", artist: "Poesia Acústica", src: "/music/capricorn.mp3" },
 ];
 
 const MusicasSection = () => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const progressRef = useRef<HTMLDivElement | null>(null); // 🔹 ADICIONADO
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(0.8);
+  const [isSeeking, setIsSeeking] = useState(false); // 🔹 ADICIONADO
 
   const currentMusic = musicas[currentIndex];
 
-  const togglePlay = () => setIsPlaying(!isPlaying);
-  const playPrevious = () => setCurrentIndex(currentIndex === 0 ? musicas.length - 1 : currentIndex - 1);
-  const playNext = () => setCurrentIndex(currentIndex === musicas.length - 1 ? 0 : currentIndex + 1);
-  const selectMusic = (index: number) => {
-    setCurrentIndex(index);
-    setIsPlaying(true);
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+    isPlaying ? audioRef.current.pause() : audioRef.current.play();
+    setIsPlaying(!isPlaying);
+  };
+
+  const playNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % musicas.length);
+  };
+
+  const playPrevious = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? musicas.length - 1 : prev - 1
+    );
+  };
+
+  useEffect(() => {
+    if (!audioRef.current) return;
+    audioRef.current.src = currentMusic.src;
+    audioRef.current.load();
+    if (isPlaying) audioRef.current.play();
+  }, [currentIndex]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateTime = () => {
+      if (!isSeeking) setCurrentTime(audio.currentTime);
+    };
+
+    audio.addEventListener("timeupdate", updateTime);
+    audio.addEventListener("loadedmetadata", () => setDuration(audio.duration));
+    audio.addEventListener("ended", playNext);
+
+    return () => {
+      audio.removeEventListener("timeupdate", updateTime);
+      audio.removeEventListener("ended", playNext);
+    };
+  }, [isSeeking]);
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = volume;
+  }, [volume]);
+
+  const formatTime = (time: number) => {
+    if (!time || isNaN(time)) return "0:00";
+    const min = Math.floor(time / 60);
+    const sec = Math.floor(time % 60).toString().padStart(2, "0");
+    return `${min}:${sec}`;
+  };
+
+  const progress = duration ? (currentTime / duration) * 100 : 0;
+
+  // 🔹 ADICIONADO — clique + arrastar
+  const seek = (clientX: number) => {
+    if (!audioRef.current || !progressRef.current) return;
+    const rect = progressRef.current.getBoundingClientRect();
+    const percent = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1);
+    audioRef.current.currentTime = percent * duration;
+    setCurrentTime(percent * duration);
   };
 
   return (
-    <section className="min-h-screen py-16 md:py-20 px-4 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 right-5 md:right-20 w-60 md:w-80 h-60 md:h-80 bg-primary/5 rounded-full blur-[100px] md:blur-[120px]" />
-        <div className="absolute bottom-40 left-5 md:left-20 w-72 md:w-96 h-72 md:h-96 bg-sky/6 rounded-full blur-[120px] md:blur-[140px]" />
-      </div>
+    <section className="min-h-screen py-16 px-4">
+      <audio ref={audioRef} preload="metadata" />
 
-      <div className="container mx-auto max-w-4xl relative z-10 px-2">
-        {/* Header */}
-        <div className="text-center mb-10 md:mb-16 animate-fade-in-up">
-          <div className="relative inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl glass-soft shadow-soft border border-primary/20 mb-4 md:mb-6">
-            <Music className="w-8 h-8 md:w-10 md:h-10 text-primary" />
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-3 md:mb-4 tracking-wide">
-            Músicas
-          </h2>
-          <p className="text-muted-foreground font-body font-light max-w-lg mx-auto leading-relaxed text-sm md:text-base px-4">
-            A trilha sonora do nosso amor, cada música com um significado especial
-          </p>
-          <div className="divider-elegant w-24 md:w-32 mx-auto mt-6 md:mt-8" />
-        </div>
+      <div className="max-w-4xl mx-auto">
+        <div className="glass-strong rounded-3xl p-8">
 
-        {/* Main Player */}
-        <div className="glass-strong rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 mb-6 md:mb-8 animate-scale-in hover:shadow-romantic transition-all duration-500 border border-primary/10">
-          {/* Album Art */}
-          <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 lg:w-56 lg:h-56 mx-auto mb-6 md:mb-8">
-            <div className={`w-full h-full rounded-full bg-gradient-to-br from-primary/30 to-sky/30 flex items-center justify-center ${isPlaying ? "animate-rotate-slow" : ""}`}>
-              <div className="w-4/5 h-4/5 rounded-full glass flex items-center justify-center">
-                <Disc className="w-10 h-10 md:w-16 md:h-16 text-primary/60" />
-              </div>
-              {/* Center hole */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 md:w-6 md:h-6 rounded-full bg-background" />
-            </div>
-            
-            {/* Glow effect when playing */}
-            {isPlaying && (
-              <div className="absolute inset-0 rounded-full glow-royal animate-pulse-soft opacity-50" />
-            )}
-          </div>
-
-          {/* Current Track Info */}
-          <div className="text-center mb-6 md:mb-8">
-            <h3 className="font-display text-xl sm:text-2xl md:text-3xl text-foreground mb-1 md:mb-2 tracking-wide">
-              {currentMusic.title}
-            </h3>
-            <p className="text-muted-foreground font-body font-light text-sm md:text-base">
-              {currentMusic.artist}
-            </p>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8 max-w-md mx-auto">
-            <span className="text-xs text-muted-foreground font-body w-8 md:w-10">0:00</span>
-            <div className="flex-1 h-1 md:h-1.5 bg-secondary rounded-full overflow-hidden">
-              <div 
-                className={`h-full rounded-full transition-all duration-500 ${
-                  isPlaying ? "w-1/4 bg-gradient-to-r from-primary to-sky animate-pulse" : "w-0 bg-primary"
-                }`}
-              />
-            </div>
-            <span className="text-xs text-muted-foreground font-body w-8 md:w-10">3:45</span>
-          </div>
-
-          {/* Controls */}
-          <div className="flex items-center justify-center gap-4 md:gap-6">
-            <button
-              onClick={playPrevious}
-              className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass flex items-center justify-center text-foreground hover:glow-royal transition-all duration-300"
-            >
-              <SkipBack className="w-4 h-4 md:w-5 md:h-5" />
-            </button>
-
-            <button
-              onClick={togglePlay}
-              className={`w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-105 ${
-                isPlaying 
-                  ? "bg-gradient-to-br from-sky to-primary glow-royal" 
-                  : "bg-gradient-to-br from-primary to-sky glow-royal"
+          <div className="relative w-48 h-48 mx-auto mb-6">
+            <div
+              className={`w-full h-full rounded-full bg-gradient-to-br from-primary to-sky flex items-center justify-center ${
+                isPlaying ? "animate-rotate-slow" : ""
               }`}
             >
-              {isPlaying ? (
-                <Pause className="w-6 h-6 md:w-8 md:h-8 text-primary-foreground" />
-              ) : (
-                <Play className="w-6 h-6 md:w-8 md:h-8 text-primary-foreground ml-0.5 md:ml-1" />
-              )}
-            </button>
-
-            <button
-              onClick={playNext}
-              className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass flex items-center justify-center text-foreground hover:glow-royal transition-all duration-300"
-            >
-              <SkipForward className="w-4 h-4 md:w-5 md:h-5" />
-            </button>
-          </div>
-
-          {/* Volume */}
-          <div className="flex items-center justify-center gap-2 md:gap-3 mt-6 md:mt-8">
-            <Volume2 className="w-3 h-3 md:w-4 md:h-4 text-muted-foreground" />
-            <div className="w-20 md:w-24 h-1 md:h-1.5 bg-secondary rounded-full">
-              <div className="w-3/4 h-full bg-primary/60 rounded-full" />
+              <Disc className="w-16 h-16 text-white/70" />
             </div>
           </div>
-        </div>
 
-        {/* Playlist */}
-        <div className="glass-strong rounded-xl md:rounded-2xl p-4 md:p-6 animate-fade-in-up border border-primary/10" style={{ animationDelay: "0.3s" }}>
-          <h4 className="font-display text-lg md:text-xl text-foreground mb-4 md:mb-6 px-2">
-            Playlist
-          </h4>
-          <div className="space-y-1.5 md:space-y-2">
-            {musicas.map((musica, index) => (
-              <button
-                key={musica.id}
-                onClick={() => selectMusic(index)}
-                className={`w-full flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg md:rounded-xl transition-all duration-300 ${
-                  currentIndex === index
-                    ? "glass glow-royal"
-                    : "hover:bg-secondary/30"
-                }`}
-              >
-                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
-                  currentIndex === index 
-                    ? "bg-gradient-to-br from-primary to-sky" 
-                    : "bg-secondary/50"
-                }`}>
-                  {currentIndex === index && isPlaying ? (
-                    <div className="flex items-end gap-0.5 h-4 md:h-5">
-                      {[...Array(3)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="w-0.5 md:w-1 bg-primary-foreground rounded-full animate-pulse"
-                          style={{ 
-                            height: `${40 + Math.random() * 60}%`,
-                            animationDelay: `${i * 0.15}s` 
-                          }}
-                        />
-                      ))}
-                    </div>
-                  ) : (
-                    <Music className={`w-4 h-4 md:w-5 md:h-5 ${currentIndex === index ? "text-primary-foreground" : "text-muted-foreground"}`} />
-                  )}
-                </div>
-                <div className="flex-1 text-left min-w-0">
-                  <p className={`font-body font-medium truncate text-sm md:text-base ${currentIndex === index ? "text-primary" : "text-foreground"}`}>
-                    {musica.title}
-                  </p>
-                  <p className="font-body text-xs md:text-sm text-muted-foreground truncate">
-                    {musica.artist}
-                  </p>
-                </div>
-                {currentIndex === index && (
-                  <Heart className="w-4 h-4 md:w-5 md:h-5 text-primary animate-pulse-soft flex-shrink-0" />
-                )}
-              </button>
-            ))}
+          <div className="text-center mb-6">
+            <h3 className="text-2xl font-display">{currentMusic.title}</h3>
+            <p className="text-muted-foreground">{currentMusic.artist}</p>
+          </div>
+
+          {/* 🔹 PROGRESSO COM SEEK */}
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-xs w-10">{formatTime(currentTime)}</span>
+
+            <div
+              ref={progressRef}
+              onMouseDown={(e) => {
+                setIsSeeking(true);
+                seek(e.clientX);
+              }}
+              onMouseMove={(e) => isSeeking && seek(e.clientX)}
+              onMouseUp={() => setIsSeeking(false)}
+              onMouseLeave={() => setIsSeeking(false)}
+              onTouchStart={(e) => {
+                setIsSeeking(true);
+                seek(e.touches[0].clientX);
+              }}
+              onTouchMove={(e) => seek(e.touches[0].clientX)}
+              onTouchEnd={() => setIsSeeking(false)}
+              className="flex-1 h-1 bg-secondary rounded-full relative cursor-pointer"
+            >
+              <div
+                className="h-full bg-primary"
+                style={{ width: `${progress}%` }}
+              />
+              <div
+                className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-primary"
+                style={{ left: `calc(${progress}% - 6px)` }}
+              />
+            </div>
+
+            <span className="text-xs w-10">{formatTime(duration)}</span>
+          </div>
+
+          <div className="flex justify-center gap-6 mb-6">
+            <button onClick={playPrevious}><SkipBack /></button>
+            <button
+              onClick={togglePlay}
+              className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center"
+            >
+              {isPlaying ? <Pause /> : <Play />}
+            </button>
+            <button onClick={playNext}><SkipForward /></button>
+          </div>
+
+          <div className="flex items-center justify-center gap-3">
+            <Volume2 />
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={(e) => setVolume(Number(e.target.value))}
+            />
           </div>
         </div>
 
-        {/* Footer Note */}
-        <div className="text-center mt-10 md:mt-16 animate-fade-in" style={{ animationDelay: "0.5s" }}>
-          <p className="text-muted-foreground/50 text-xs md:text-sm font-body font-light flex items-center justify-center gap-2">
-            <span className="w-6 md:w-8 h-px bg-primary/30" />
-            Cada nota é uma memória nossa
-            <span className="w-6 md:w-8 h-px bg-primary/30" />
-          </p>
+        <div className="mt-8 space-y-2">
+          {musicas.map((musica, index) => (
+            <button
+              key={musica.id}
+              onClick={() => {
+                setCurrentIndex(index);
+                setIsPlaying(true);
+              }}
+              className={`w-full p-4 rounded-xl flex justify-between ${
+                currentIndex === index ? "glass" : "hover:bg-secondary/30"
+              }`}
+            >
+              <div>
+                <p>{musica.title}</p>
+                <p className="text-sm text-muted-foreground">{musica.artist}</p>
+              </div>
+              {currentIndex === index && <Heart className="text-primary" />}
+            </button>
+          ))}
         </div>
       </div>
     </section>
