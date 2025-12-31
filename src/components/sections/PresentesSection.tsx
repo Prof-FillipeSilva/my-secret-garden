@@ -173,7 +173,7 @@ const PresentesContent = ({ onLastAudioPlayed }: PresentesContentProps) => {
             <span className="text-gradient-royal">Seus Presentes Especiais!</span>
           </h2>
           <p className="text-muted-foreground font-body font-light max-w-md mx-auto">
-            Estes momentos foram preparados especialmente para você, com todo amor do mundo
+            Essa parte aqui só quando você receber a encomenda, amanhã kkk
           </p>
           <div className="divider-elegant w-32 mx-auto mt-8" />
         </div>
