@@ -3,7 +3,7 @@ import { Gift, Play, Pause, Heart, Sparkles, Music, Image as ImageIcon } from "l
 import LockedSection from "@/components/LockedSection";
 
 // Data de liberação: 31/12/2025 às 10h00
-const RELEASE_DATE = new Date("2025-12-31T10:00:00");
+const RELEASE_DATE = new Date("2025-12-31T17:00:00");
 
 interface AudioItem {
   id: string;
@@ -17,31 +17,38 @@ interface AudioItem {
 const audioItems: AudioItem[] = [
   {
     id: "1",
-    title: "Primeiro Presente",
+    title: "A blusa",
     src: "",
     photoSrc: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800",
-    photoAlt: "Momento especial 1"
+    photoAlt: "Salve o Corinthians"
   },
   {
     id: "2",
-    title: "Segundo Presente",
+    title: "A garrafinha",
     src: "",
     photoSrc: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=800",
-    photoAlt: "Momento especial 2"
+    photoAlt: "Pra lembrar de beber água kkk"
   },
   {
     id: "3",
-    title: "Terceiro Presente",
+    title: "A foto",
     src: "",
     photoSrc: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800",
-    photoAlt: "Momento especial 3"
+    photoAlt: "Esse dia 💙"
   },
   {
     id: "4",
-    title: "Quarto Presente",
-    src: "",
+    title: "A rosa azul",
+    src: "/audio/1.mp3",
     photoSrc: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800",
-    photoAlt: "Momento especial 4"
+    photoAlt: "O impossível, o extraordinário"
+  },
+  {
+    id: "5",
+    title: "O ursinho",
+    src: "/audio/1.mp3",
+    photoSrc: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800",
+    photoAlt: "Um momento bobo que vai estar sempre aqui"
   },
 ];
 
@@ -178,7 +185,7 @@ const PresentesContent = ({ onLastAudioPlayed }: PresentesContentProps) => {
             Introdução
           </h3>
           <p className="text-muted-foreground font-body font-light mb-6">
-            Antes de abrir seus presentes, ouça esta mensagem especial...
+            Como expliquei no início, cada áudio representa um dos presentes, esse é o de introdução...
           </p>
 
           <div className="flex items-center gap-5 p-5 glass-soft rounded-2xl border border-primary/10">
@@ -198,9 +205,7 @@ const PresentesContent = ({ onLastAudioPlayed }: PresentesContentProps) => {
             </button>
 
             <div className="flex-1 min-w-0">
-              <h4 className="font-display text-xl text-foreground mb-2">
-                Mensagem de Boas-Vindas
-              </h4>
+              
               <div className="flex items-center gap-3">
                 <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden">
                   <div
@@ -298,11 +303,11 @@ const PresentesContent = ({ onLastAudioPlayed }: PresentesContentProps) => {
         <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
           <div className="inline-flex items-center gap-3 glass-strong px-8 py-4 rounded-full shadow-royal border border-primary/20">
             <Sparkles className="w-5 h-5 text-primary" />
-            <span className="font-display text-xl text-gradient-royal">Com todo meu amor!</span>
+            <span className="font-display text-xl text-gradient-royal">Como todo o amor que ainda sinto!</span>
             <Sparkles className="w-5 h-5 text-primary" />
           </div>
           <p className="text-muted-foreground font-body text-sm mt-6 font-light">
-            Que este momento seja especial como você é para mim 💕
+            Que tenha sido especial pra você, também 💕
           </p>
         </div>
       </div>
