@@ -336,16 +336,15 @@ const DespedidaSection = ({ isUnlocked }: DespedidaSectionProps) => {
         </div>
 
         <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6 animate-fade-in-up tracking-wide">
-          💕 Despedida
+          Despedida
         </h2>
 
         <div className="glass-soft rounded-3xl p-8 md:p-10 mb-10 animate-fade-in-up shadow-royal border border-primary/10" style={{ animationDelay: "0.2s" }}>
           <p className="font-display text-xl md:text-2xl text-foreground mb-5 leading-relaxed">
-            Um momento especial aguarda...
+            Essa secção é a que eu menos gosto, mas que você também precisa conhecer
           </p>
-          <p className="font-body text-muted-foreground leading-relaxed font-light">
-            Ouça o último áudio da seção Presentes para desbloquear esta despedida especial. 
-            Após ouvi-lo, um contador de 1 hora será iniciado.
+          <p className="font-body text-muted-foreground leading-relaxed font-light"> 
+            Ela vai ser liberada amanhã quando você ouvir o último áudio da secção "Presentes", 1 hora depois, pra você conseguir curtir seus presentes, entra nela quando estiver só.
           </p>
         </div>
 
