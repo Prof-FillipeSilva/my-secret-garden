@@ -282,7 +282,7 @@ const LockedContent = ({ timeLeft }: { timeLeft: TimeLeft }) => {
             Quase lá...
           </p>
           <p className="font-body text-muted-foreground leading-relaxed mb-4 font-light">
-            Esta seção, como expliquei, vai ser liberada 1 hora após você ouvir o último áudio da seção Presentes, se já tiver escutado, provavelmente o contador já está aqui em baixo. 
+            Esta seção, era pra ser liberada 1 hora após você ouvir o último áudio da seção Presentes, mas como você recebeu tarde, dimunuí para 15 minutos, se já tiver escutado, provavelmente o contador já está aqui em baixo. 
             Esse site foi pensado nos mínimos detalhes, Belle, e te confesso que essa foi a secção que menos gostei, porém, a mais necessária, preciso que veja-a, também.
           </p>
           <div className="flex items-center justify-center gap-3 my-6">
