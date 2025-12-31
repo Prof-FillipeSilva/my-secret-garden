@@ -51,10 +51,10 @@ const SurpresaContent = () => {
             <Star className="absolute -bottom-2 -left-2 w-6 h-6 text-gold animate-twinkle" />
           </div>
           <h2 className="font-display text-4xl md:text-6xl text-foreground mb-6 tracking-wide">
-            <span className="text-gradient-royal">Feliz Ano Novo!</span>
+            <span className="text-gradient-royal">Feliz Aniversário, Meu Bem, você merece o mundo!</span>
           </h2>
           <p className="text-muted-foreground font-body font-light max-w-lg mx-auto text-lg leading-relaxed">
-            Meu amor, este é o início de um novo ciclo, e eu quero vivê-lo ao seu lado.
+            Hoje, é o fim de um ciclo pra nós, mas o início de um novo ciclo pra você, e como falamos sobre esse dia, né, e foi chegando, nessa reta final parecia que eu estava mais ansioso que você, deixo aqui pra você uma mensagem bonitinha de aniversário.
           </p>
           <div className="divider-elegant w-40 mx-auto mt-8" />
         </div>
@@ -63,7 +63,7 @@ const SurpresaContent = () => {
         <div className="glass-strong rounded-3xl p-8 md:p-10 mb-10 animate-scale-in hover:shadow-royal transition-all duration-500 border border-primary/10">
           <h3 className="font-display text-2xl text-foreground mb-6 flex items-center gap-3">
             <Video className="w-5 h-5 text-primary" />
-            Vídeo de Aniversário
+            🎆🎆 1.6 da Bebelle 🎆🎆
           </h3>
           
           {/* Video Player */}
@@ -93,7 +93,7 @@ const SurpresaContent = () => {
           </div>
           
           <p className="text-center text-muted-foreground/60 text-sm mt-6 font-body font-light">
-            Um vídeo especial, feito com muito amor 💕
+            Que esse vídeo deixe o seu coração quentinho 
           </p>
         </div>
 
@@ -128,7 +128,7 @@ const SurpresaContent = () => {
           </div>
 
           <p className="font-body text-primary font-light text-sm tracking-wider text-center">
-            — Com todo meu amor, sempre
+            — Espero que tenha gostado de tudo, de verdade
           </p>
         </div>
 
@@ -140,7 +140,7 @@ const SurpresaContent = () => {
             <Star className="w-6 h-6 text-gold animate-twinkle" style={{ animationDelay: "0.5s" }} />
           </div>
           <p className="text-muted-foreground font-body text-sm mt-6 font-light">
-            Que seja o nosso melhor ano juntos 💕
+            Que esse ano seja pra você, o melhor da sua vida, te amo muito 💙💙💙
           </p>
           
           <div className="mt-10 flex justify-center items-center gap-3">
