@@ -12,7 +12,7 @@ import {
 import LockedSection from "@/components/LockedSection";
 
 // Data de liberação: 31/12/2025 às 10h00
-const RELEASE_DATE = new Date("2025-12-31T18:00:00");
+const RELEASE_DATE = new Date("2025-12-31T19:00:00");
 
 interface AudioItem {
   id: string;
