@@ -96,7 +96,7 @@ const DespedidaContent = () => {
             <span className="text-gradient-royal">Despedida</span>
           </h2>
           <p className="text-muted-foreground font-body font-light max-w-md mx-auto leading-relaxed">
-            Palavras finais, guardadas no coração, para encerrar esse momento especial
+            É estranho isso aqui acontecendo, porque nunca imaginei dessa forma kkk, mas enfim, nem tudo é do jeito que a gente quer
           </p>
           <div className="divider-elegant w-32 mx-auto mt-8" />
         </div>
@@ -165,7 +165,7 @@ const DespedidaContent = () => {
               "Obrigado por cada momento..."
             </p>
             <p className="text-muted-foreground font-body font-light">
-              Este é apenas o começo da nossa história 💕
+              Você nunca vai ser uma estranha pra mim, sempre vai existir aqui e sempre vai ter um espacinho reservado no meu coração, do tamanho e formato que só você consegue preencher
             </p>
           </div>
         </div>
@@ -202,7 +202,7 @@ const LockedContent = ({ timeLeft }: { timeLeft: TimeLeft }) => {
 
         {/* Title */}
         <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6 animate-fade-in-up tracking-wide">
-          💕 Despedida
+          Despedida
         </h2>
 
         {/* Message */}
@@ -211,8 +211,8 @@ const LockedContent = ({ timeLeft }: { timeLeft: TimeLeft }) => {
             Quase lá...
           </p>
           <p className="font-body text-muted-foreground leading-relaxed mb-4 font-light">
-            Esta seção será liberada 1 hora após você ouvir o último áudio da seção Presentes. 
-            Um momento especial está sendo preparado para a despedida.
+            Esta seção, como expliquei, vai ser liberada 1 hora após você ouvir o último áudio da seção Presentes, se já tiver escutado, provavelmente o contador já está aqui em baixo. 
+            Esse site foi pensado nos mínimos detalhes, Belle, e te confesso que essa foi a secção que menos gostei, porém, a mais necessária, preciso que veja-a, também.
           </p>
           <div className="flex items-center justify-center gap-3 my-6">
             <div className="w-10 h-px bg-gradient-to-r from-transparent to-primary/40" />
@@ -220,7 +220,7 @@ const LockedContent = ({ timeLeft }: { timeLeft: TimeLeft }) => {
             <div className="w-10 h-px bg-gradient-to-l from-transparent to-primary/40" />
           </div>
           <p className="font-display text-lg text-foreground/80 tracking-wide">
-            Falta pouco para o encerramento. 💕
+            Alguns minutinhos para o fim desse ciclo, que me fez tão bem, e tão mal, em intervalos de tempo tão próximos... 
           </p>
         </div>
 
