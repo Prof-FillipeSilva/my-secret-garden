@@ -325,7 +325,7 @@ const PresentesSection = ({ onLastAudioPlayed }: PresentesSectionProps) => {
       releaseDate={RELEASE_DATE}
       icon={<Gift className="w-12 h-12 text-primary" />}
       title="🎁 Presentes"
-      waitingMessage="Estes presentes foram preparados com carinho, pensados em cada detalhe, e serão revelados no momento perfeito."
+      waitingMessage="Essa parte aqui, só amanhã, a Ket vai se encarregar de me falar kkk, pode ser que essa contagem mude, who knows?"
     >
       <PresentesContent onLastAudioPlayed={onLastAudioPlayed} />
     </LockedSection>
