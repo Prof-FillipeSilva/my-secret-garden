@@ -76,7 +76,7 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
         {/* Waiting Message */}
         <div className="glass-soft rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 mb-8 md:mb-10 animate-fade-in-up shadow-romantic border border-primary/10 mx-2" style={{ animationDelay: "0.2s" }}>
           <p className="font-display text-lg sm:text-xl md:text-2xl text-foreground mb-3 md:mb-5 leading-relaxed">
-            Tá quase na hora…
+            Aguarda um pouquinho…
           </p>
           <p className="font-body text-muted-foreground leading-relaxed mb-3 md:mb-4 font-light text-sm md:text-base">
             {waitingMessage}
@@ -87,8 +87,7 @@ const LockedSection = ({ releaseDate, icon, title, waitingMessage, children }: L
             <div className="w-8 md:w-10 h-px bg-gradient-to-l from-transparent to-primary/40" />
           </div>
           <p className="font-display text-base md:text-lg text-foreground/80 tracking-wide">
-            Espero que goste, Belle, de tudo, foi de coração.<br />
-            Só para você. 💙
+            💙💙💙
           </p>
         </div>
 
