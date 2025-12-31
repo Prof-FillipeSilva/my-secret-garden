@@ -12,7 +12,7 @@ import {
 import LockedSection from "@/components/LockedSection";
 
 // Data de liberação: 31/12/2025 às 10h00
-const RELEASE_DATE = new Date("2025-12-31T17:00:00");
+const RELEASE_DATE = new Date("2025-12-31T10:00:00");
 
 interface AudioItem {
   id: string;
@@ -55,8 +55,8 @@ const audioItems: AudioItem[] = [
   {
     id: "5",
     title: "O ursinho",
-    src: "/audio/rosa.ogg",
-    photoSrc: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800",
+    src: "/audio/ursinho.ogg",
+    photoSrc: "/assets/ursinho.jpg",
     photoAlt: "Um momento bobo que vai estar sempre aqui"
   }
 ];
