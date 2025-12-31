@@ -74,7 +74,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
                 <Sparkles className="absolute -top-1 -right-1 w-2.5 h-2.5 md:w-3 md:h-3 text-accent/60 animate-twinkle" />
               </div>
               <span className="font-display text-lg md:text-xl text-foreground tracking-wide hidden sm:block">
-                Nosso Amor
+                Nosso Cantinho
               </span>
             </div>
 
