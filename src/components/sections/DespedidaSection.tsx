@@ -9,9 +9,14 @@ interface Audio {
 
 // Áudios configuráveis - adicione seus áudios aqui
 const audios: Audio[] = [
-  { id: "1", title: "Palavras Finais", src: "" },
-  { id: "2", title: "Meu Último Sussurro", src: "" },
-  { id: "3", title: "Até Logo, Meu Amor", src: "" },
+  { id: "1", title: "Carta Aberta", src: "/audio/1.ogg" },
+  { id: "2", title: "2026", src: "/audio/2.ogg" },
+  { id: "3", title: " 'Frieza Total' ", src: "/audio/3.ogg" },
+  { id: "4", title: "O silêncio", src: "/audio/4.ogg" },
+  { id: "5", title: "Piloto Automático", src: "/audio/5.mp3" },
+  { id: "6", title: "03/12/2025", src: "/audio/51.mp3" },
+  { id: "7", title: "Por fim, fim...", src: "/audio/61.ogg" },
+  
 ];
 
 interface TimeLeft {
@@ -28,26 +33,53 @@ const DespedidaContent = () => {
   const [playingId, setPlayingId] = useState<string | null>(null);
   const [progress, setProgress] = useState<{ [key: string]: number }>({});
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement | null }>({});
+  const [volume, setVolume] = useState<{ [key: string]: number }>({});
+
+  const handleVolumeChange = (id: string, value: number) => {
+  const audio = audioRefs.current[id];
+  if (!audio) return;
+
+  audio.volume = value;
+  setVolume(prev => ({
+    ...prev,
+    [id]: value
+  }));
+  };
+
+  const handleSeek = (id: string, value: number) => {
+  const audio = audioRefs.current[id];
+  if (!audio || !audio.duration) return;
+
+  const newTime = (value / 100) * audio.duration;
+  audio.currentTime = newTime;
+
+  setProgress(prev => ({
+    ...prev,
+    [id]: value
+  }));
+  };
 
   const togglePlay = (id: string) => {
-    const audio = audioRefs.current[id];
-    if (!audio) return;
+  const audio = audioRefs.current[id];
+  if (!audio) return;
 
-    // Pause all other audios
-    Object.entries(audioRefs.current).forEach(([audioId, audioEl]) => {
-      if (audioId !== id && audioEl) {
-        audioEl.pause();
-      }
-    });
-
-    if (playingId === id) {
-      audio.pause();
-      setPlayingId(null);
-    } else {
-      audio.play();
-      setPlayingId(id);
+  Object.entries(audioRefs.current).forEach(([audioId, audioEl]) => {
+    if (audioId !== id && audioEl) {
+      audioEl.pause();
+      audioEl.currentTime = 0;
+      setProgress(prev => ({ ...prev, [audioId]: 0 }));
     }
+  });
+
+  if (playingId === id) {
+    audio.pause();
+    setPlayingId(null);
+  } else {
+    audio.play();
+    setPlayingId(id);
+  }
   };
+
 
   const handleTimeUpdate = (id: string) => {
     const audio = audioRefs.current[id];
@@ -132,18 +164,48 @@ const DespedidaContent = () => {
                   )}
                 </button>
 
-                <div className="flex-1">
+                <div className="flex-1 relative">
+                  {/* Barra visual */}
                   <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300"
                       style={{ width: `${progress[audio.id] || 0}%` }}
                     />
                   </div>
+
+                  {/* Slider invisível para controle */}
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={progress[audio.id] || 0}
+                    onChange={(e) => handleSeek(audio.id, Number(e.target.value))}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
+
+                  {/* Bolinha */}
+                  <div
+                    className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md pointer-events-none"
+                    style={{ left: `calc(${progress[audio.id] || 0}% - 6px)` }}
+                  />
                 </div>
+
 
                 <span className="text-sm text-muted-foreground font-body min-w-[50px] text-right">
                   {playingId === audio.id ? "Tocando" : "0:00"}
                 </span>
+
+                  <input
+                    type="range"
+                    min={0}
+                    max={1}
+                    step={0.01}
+                    value={volume[audio.id] ?? 0.8}
+                    onChange={(e) => handleVolumeChange(audio.id, Number(e.target.value))}
+                    className="w-24 accent-primary cursor-pointer"
+                  />
+
+                
               </div>
 
               <audio
@@ -152,6 +214,15 @@ const DespedidaContent = () => {
                 onTimeUpdate={() => handleTimeUpdate(audio.id)}
                 onEnded={() => handleEnded(audio.id)}
                 preload="metadata"
+
+                onLoadedMetadata={() => {
+                  const audio = audioRefs.current[audio.id];
+                  if (audio) {
+                    audio.volume = 0.8;
+                    setVolume(prev => ({ ...prev, [audio.id]: 0.8 }));
+                  }
+                }}
+
               />
             </div>
           ))}
@@ -272,7 +343,7 @@ const DespedidaSection = ({ isUnlocked }: DespedidaSectionProps) => {
     if (isUnlocked) {
       // Set unlock time to 1 hour from now when unlocked
       if (!savedUnlockTime) {
-        const newUnlockTime = new Date(Date.now() + 60 * 60 * 1); // 1 hour
+        const newUnlockTime = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
         localStorage.setItem("despedida_unlock_time", newUnlockTime.toISOString());
         setUnlockTime(newUnlockTime);
       } else {
