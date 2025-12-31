@@ -3,7 +3,7 @@ import { Sparkles, Play, Pause, Heart, Star, Video, Quote } from "lucide-react";
 import LockedSection from "@/components/LockedSection";
 
 // Data de liberação: 31/12/2025 às 00h00
-const RELEASE_DATE = new Date("2025-12-31T00:15:00");
+const RELEASE_DATE = new Date("2025-12-31T01:00:00");
 
 const SurpresaContent = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
