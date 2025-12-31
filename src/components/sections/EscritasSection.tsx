@@ -192,7 +192,7 @@ const EscritasSection = () => {
             Escritas
           </h2>
           <p className="text-muted-foreground font-body font-light max-w-lg mx-auto leading-relaxed text-sm md:text-base px-4">
-            Palavras escritas do coração, versos que expressam o que palavras simples não conseguem
+            Todas as vezes que escrevi pensando em você, essas palavras trouxeram você um pouquinho mais pra perto de mim
           </p>
           <div className="divider-elegant w-24 md:w-32 mx-auto mt-6 md:mt-8" />
         </div>
@@ -251,7 +251,7 @@ const EscritasSection = () => {
         <div className="text-center mt-12 md:mt-20 animate-fade-in" style={{ animationDelay: "0.6s" }}>
           <p className="text-muted-foreground/50 text-xs md:text-sm font-body font-light flex items-center justify-center gap-2">
             <span className="w-6 md:w-8 h-px bg-primary/30" />
-            Cada palavra é um pedacinho do meu coração
+            Na época que foram escritos, cada um desses poemas tinha um enorme significado, e acho que é isso que importa
             <span className="w-6 md:w-8 h-px bg-primary/30" />
           </p>
         </div>
