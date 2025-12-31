@@ -160,7 +160,8 @@ const SurpresaSection = () => {
       releaseDate={RELEASE_DATE}
       icon={<Sparkles className="w-12 h-12 text-primary" />}
       title="Surpresa"
-      waitingMessage="Acalma o coração, falta bem pouco"
+      waitingMessage="Espero que goste, Belle, de tudo, foi de coração.<br />
+            Só para você."
     >
       <SurpresaContent />
     </LockedSection>
